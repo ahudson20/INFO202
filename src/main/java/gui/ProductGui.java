@@ -17,6 +17,7 @@ public class ProductGui extends javax.swing.JDialog {
     public ProductGui(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        comboBoxCategory.setEditable(true);
     }
 
     /**
@@ -36,13 +37,13 @@ public class ProductGui extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtareaDescription = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        jComboBoxCategory = new javax.swing.JComboBox<>();
+        comboBoxCategory = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtQuantity = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        buttonSave = new javax.swing.JButton();
+        buttonCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -58,7 +59,12 @@ public class ProductGui extends javax.swing.JDialog {
 
         jLabel1.setText("Category");
 
-        jComboBoxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxCategoryActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Price");
 
@@ -70,9 +76,19 @@ public class ProductGui extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("Save");
+        buttonSave.setText("Save");
+        buttonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSaveActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Cancel");
+        buttonCancel.setText("Cancel");
+        buttonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,16 +114,16 @@ public class ProductGui extends javax.swing.JDialog {
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboBoxCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtPrice)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(txtQuantity))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -128,7 +144,7 @@ public class ProductGui extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBoxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBoxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -139,8 +155,8 @@ public class ProductGui extends javax.swing.JDialog {
                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(buttonSave)
+                    .addComponent(buttonCancel))
                 .addContainerGap())
         );
 
@@ -150,6 +166,32 @@ public class ProductGui extends javax.swing.JDialog {
     private void txtQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtQuantityActionPerformed
+
+    private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
+        // TODO add your handling code here:
+        String name = txtID.getText();
+        String id = txtName.getText();
+        String description = txtareaDescription.getText();
+        String category = (String) comboBoxCategory.getSelectedItem();
+        
+        String priceString = txtPrice.getText();
+        String quantityString = txtQuantity.getText();
+        Integer price = new Integer(priceString);
+        Integer quantity = new Integer(quantityString);
+        
+        System.out.println("Name :" + name + " ID: " + id);
+        System.out.println("Description :" + description + " Category: " + category);
+        System.out.println("Price :" + price + " Quantity: " + quantity);
+    }//GEN-LAST:event_buttonSaveActionPerformed
+
+    private void comboBoxCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxCategoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxCategoryActionPerformed
+
+    private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_buttonCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,9 +236,9 @@ public class ProductGui extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBoxCategory;
+    private javax.swing.JButton buttonCancel;
+    private javax.swing.JButton buttonSave;
+    private javax.swing.JComboBox<String> comboBoxCategory;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
