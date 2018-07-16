@@ -5,6 +5,8 @@
  */
 package gui;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author hudan995
@@ -176,12 +178,15 @@ public class ProductGui extends javax.swing.JDialog {
         
         String priceString = txtPrice.getText();
         String quantityString = txtQuantity.getText();
-        Integer price = new Integer(priceString);
-        Integer quantity = new Integer(quantityString);
+        BigDecimal price = new BigDecimal(priceString);
+        BigDecimal quantity = new BigDecimal(quantityString);
         
-        System.out.println("Name :" + name + " ID: " + id);
+        /*System.out.println("Name :" + name + " ID: " + id);
         System.out.println("Description :" + description + " Category: " + category);
-        System.out.println("Price :" + price + " Quantity: " + quantity);
+        System.out.println("Price :" + price + " Quantity: " + quantity);*/
+        
+        domain.Product product = new domain.Product(id, name, description, category, price, quantity);
+        System.out.println(product.toString());
     }//GEN-LAST:event_buttonSaveActionPerformed
 
     private void comboBoxCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxCategoryActionPerformed
