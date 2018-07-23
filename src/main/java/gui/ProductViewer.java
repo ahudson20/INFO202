@@ -5,6 +5,8 @@
  */
 package gui;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author hudan995
@@ -12,11 +14,21 @@ package gui;
 public class ProductViewer extends javax.swing.JDialog {
 
     /**
+     * Create instance of ProductDAO
+     */
+    private dao.ProductDao productDao = new dao.ProductDao();
+
+    private gui.helpers.SimpleListModel myModel = new gui.helpers.SimpleListModel();
+
+    /**
      * Creates new form ProductViewer
      */
     public ProductViewer(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ArrayList<domain.Product> products = productDao.getProducts();
+        myModel.updateItems(products);
+        productsList.setModel(myModel);
     }
 
     /**
@@ -29,17 +41,17 @@ public class ProductViewer extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        productsList = new javax.swing.JList<>();
         closeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        productsList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(productsList);
 
         closeButton.setText("Close");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +131,7 @@ public class ProductViewer extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton closeButton;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> productsList;
     // End of variables declaration//GEN-END:variables
 }
