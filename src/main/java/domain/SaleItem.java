@@ -5,28 +5,30 @@
  */
 package domain;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author anaruhudson
  */
 public class SaleItem {
-    private int quantityPurchased;
-    private double salePrice;
+    private Integer quantityPurchased;
+    private BigDecimal salePrice;
     private Product product;
     private Sale sale;
 
-    public SaleItem(int quantityPurchased, double salePrice, Product product, Sale sale) {
+    public SaleItem(Integer quantityPurchased, BigDecimal salePrice, Product product, Sale sale) {
         this.quantityPurchased = quantityPurchased;
         this.salePrice = salePrice;
         this.product = product;
         this.sale = sale;
     }
 
-    public int getQuantityPurchased() {
+    public Integer getQuantityPurchased() {
         return quantityPurchased;
     }
 
-    public double getSalePrice() {
+    public BigDecimal getSalePrice() {
         return salePrice;
     }
 
@@ -38,11 +40,11 @@ public class SaleItem {
         return sale;
     }
 
-    public void setQuantityPurchased(int quantityPurchased) {
+    public void setQuantityPurchased(Integer quantityPurchased) {
         this.quantityPurchased = quantityPurchased;
     }
 
-    public void setSalePrice(double salePrice) {
+    public void setSalePrice(BigDecimal salePrice) {
         this.salePrice = salePrice;
     }
 
@@ -54,8 +56,9 @@ public class SaleItem {
         this.sale = sale;
     }
     
-    public double getItemTotal(){
-        double total = (double)this.quantityPurchased * this.salePrice;
-        return total;
+    public BigDecimal getItemTotal(){
+        //double total = (double)this.quantityPurchased * this.salePrice;
+        return this.salePrice.multiply(new BigDecimal(this.quantityPurchased));
+        //return null;
     }
 }
