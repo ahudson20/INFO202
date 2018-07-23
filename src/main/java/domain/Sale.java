@@ -18,7 +18,7 @@ public class Sale {
     private java.time.LocalDate date;
     private String status;
     private Customer customer;
-    private List<SaleItem> saleList = new ArrayList<>();
+    private final List<SaleItem> saleList = new ArrayList<>();
 
     public Sale(String saleID, LocalDate date, String status, Customer customer) {
         this.saleID = saleID;
