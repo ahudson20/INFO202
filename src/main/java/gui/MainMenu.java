@@ -30,7 +30,7 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         addNewProductButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        viewProductsButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,7 +44,12 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("View Products");
+        viewProductsButton.setText("View Products");
+        viewProductsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewProductsButtonActionPerformed(evt);
+            }
+        });
 
         exitButton.setText("Exit");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +67,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel1)
                     .addComponent(addNewProductButton, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewProductsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 89, Short.MAX_VALUE))
         );
@@ -74,7 +79,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(addNewProductButton)
                 .addGap(46, 46, 46)
-                .addComponent(jButton2)
+                .addComponent(viewProductsButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(exitButton)
                 .addGap(47, 47, 47))
@@ -109,6 +114,13 @@ public class MainMenu extends javax.swing.JFrame {
         product.setLocationRelativeTo(this);
         product.setVisible(true);
     }//GEN-LAST:event_addNewProductButtonActionPerformed
+
+    private void viewProductsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProductsButtonActionPerformed
+        // TODO add your handling code here:
+        ProductViewer product = new ProductViewer(this, true);
+        product.setLocationRelativeTo(this);
+        product.setVisible(true);
+    }//GEN-LAST:event_viewProductsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,8 +160,8 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addNewProductButton;
     private javax.swing.JButton exitButton;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton viewProductsButton;
     // End of variables declaration//GEN-END:variables
 }
