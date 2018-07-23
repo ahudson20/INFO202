@@ -21,7 +21,14 @@ public class ProductEditor extends javax.swing.JDialog {
         initComponents();
         comboBoxCategory.setEditable(true);
     }
+    
+    /**
+     * Create instance of ProductDao in which to save
+     * new Products into.
+     */
+    public dao.ProductDao productDao = new dao.ProductDao();
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -180,6 +187,7 @@ public class ProductEditor extends javax.swing.JDialog {
         System.out.println("Price :" + price + " Quantity: " + quantity);*/
         
         domain.Product product = new domain.Product(id, name, description, category, price, quantity);
+        productDao.saveProduct(product);
         System.out.println(product.toString());
     }//GEN-LAST:event_buttonSaveActionPerformed
 
@@ -219,7 +227,7 @@ public class ProductEditor extends javax.swing.JDialog {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
