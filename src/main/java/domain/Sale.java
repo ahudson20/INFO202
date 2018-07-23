@@ -5,6 +5,7 @@
  */
 package domain;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -61,14 +62,13 @@ public class Sale {
     public void addItem(SaleItem saleItem){
         this.saleList.add(saleItem);
     }
-    /**TODO: add getTotal() method */
     
-    public double getTotal(){
-        //return 1.1;
-        double d  = 0.0;
-        for(SaleItem saleItem: saleList){
-            d = d + saleItem.getItemTotal();
+    /**TODO: add getTotal() method */
+    public BigDecimal getTotal(){
+        BigDecimal total = BigDecimal.ZERO;
+        for(SaleItem s: saleList){
+            total = total.add(s.getItemTotal());
         }
-        return d;
+        return total;
     }
 }
