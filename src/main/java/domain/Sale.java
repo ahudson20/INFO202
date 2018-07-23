@@ -62,4 +62,13 @@ public class Sale {
         this.saleList.add(saleItem);
     }
     /**TODO: add getTotal() method */
+    
+    public double getTotal(){
+        //return 1.1;
+        double d  = 0.0;
+        for(SaleItem saleItem: saleList){
+            d = d + saleItem.getItemTotal();
+        }
+        return d;
+    }
 }
