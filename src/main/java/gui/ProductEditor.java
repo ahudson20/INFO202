@@ -176,8 +176,8 @@ public class ProductEditor extends javax.swing.JDialog {
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         // TODO add your handling code here:
-        String name = txtID.getText();
-        String id = txtName.getText();
+        String id = txtID.getText();
+        String name = txtName.getText();
         String description = txtareaDescription.getText();
         String category = (String) comboBoxCategory.getSelectedItem();
         
