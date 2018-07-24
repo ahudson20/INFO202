@@ -13,6 +13,8 @@ import java.util.*;
  */
 public class ProductDao {
     private static ArrayList<domain.Product> productsList = new ArrayList<>();
+    private static ArrayList<String> categoryList = new ArrayList<>();
+
     
     public void saveProduct(domain.Product product){
         productsList.add(product);
@@ -20,5 +22,12 @@ public class ProductDao {
     
     public ArrayList<domain.Product> getProducts(){
         return productsList;
+    }
+    
+    public ArrayList<String> getCategories(){
+        for(domain.Product p : productsList){
+            categoryList.add(p.getCategory());
+        }
+        return categoryList;
     }
 }
