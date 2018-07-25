@@ -22,6 +22,12 @@ editor++
 ' create a DAO
 create "ProductDao" as dao <<DAO>>
 editor -> dao : construct 
+
+'getting categories for combobox from dao
+editor -> dao++ : getCategories()
+return categories
+dao--
+editor -> editor : set categories in combobox
 editor--
 
 ' user enters product details and clicks the save product button
