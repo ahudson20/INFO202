@@ -28,7 +28,7 @@ return products
 dao--
 
 ' set products from dao
-viewer -> viewer : set products
+viewer -> viewer : set products in gui
 viewer--
 
 user -> viewer : clicks close button
