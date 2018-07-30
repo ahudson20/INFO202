@@ -1,0 +1,52 @@
+@startuml
+' use strict UML mode
+skinparam style strictuml
+
+actor "User" as user
+
+participant "Administration" as main <<main>>
+main++
+
+create "MainMenu" as menu <<frame>>
+main -> menu : construct
+main -> menu++ : setVisible(true)
+
+user -> menu : click 'add new product'
+
+create "ProductEditor" as editor <<dialog>>
+menu -> editor : construct
+
+' activate Product editor constructor
+editor++
+
+' create a DAO
+create "ProductDao" as dao <<DAO>>
+editor -> dao : construct 
+
+'getting categories for combobox from dao
+editor -> dao++ : getCategories()
+return categories
+dao--
+editor -> editor : set categories in combobox
+editor--
+
+' user enters product details and clicks the save product button
+user -> editor++ : enters product details
+editor--
+
+user -> editor++ : clicks save button
+editor -> editor : get product details from gui components
+
+create "Product : product" as product <<domain>>
+editor -> product : construct(product details)
+
+' save product
+editor -> dao++ : save(product)
+dao--
+
+'dispose dialog
+editor -> editor : dispose()
+
+destroy editor
+
+@enduml

@@ -6,12 +6,20 @@
 package gui;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 /**
  *
  * @author hudan995
  */
 public class ProductEditor extends javax.swing.JDialog {
+    /**
+     * Create instance of ProductDAO
+     * and SimpleListModel
+     */
+    private dao.ProductDao productDao = new dao.ProductDao();
+
+    private gui.helpers.SimpleListModel myModel = new gui.helpers.SimpleListModel();
 
     /**
      * Creates new form ProductGui
@@ -20,15 +28,11 @@ public class ProductEditor extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         comboBoxCategory.setEditable(true);
+        ArrayList<String> categories = productDao.getCategories();
+        myModel.updateItems(categories);
+        comboBoxCategory.setModel(myModel);
     }
-    
-    /**
-     * Create instance of ProductDao in which to save
-     * new Products into.
-     */
-    public dao.ProductDao productDao = new dao.ProductDao();
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -172,8 +176,8 @@ public class ProductEditor extends javax.swing.JDialog {
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         // TODO add your handling code here:
-        String name = txtID.getText();
-        String id = txtName.getText();
+        String id = txtID.getText();
+        String name = txtName.getText();
         String description = txtareaDescription.getText();
         String category = (String) comboBoxCategory.getSelectedItem();
         
