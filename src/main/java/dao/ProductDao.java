@@ -12,13 +12,13 @@ import java.util.*;
  * @author hudan995
  */
 public class ProductDao {
-    private static ArrayList<domain.Product> productsList = new ArrayList<>();
+    private static Collection<domain.Product> productsList = new HashSet<>();
     
     public void saveProduct(domain.Product product){
         productsList.add(product);
     }
     
-    public ArrayList<domain.Product> getProducts(){
+    public Collection<domain.Product> getProducts(){
         return productsList;
     }
 }
