@@ -8,6 +8,7 @@ package gui;
 import domain.Product;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -99,10 +100,16 @@ public class ProductViewer extends javax.swing.JDialog {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
         domain.Product product = (domain.Product)productsList.getSelectedValue();
-        productDao.deleteProduct(product);
-        Collection<domain.Product> products = productDao.getProducts();
-        myModel.updateItems(products);
-        productsList.setModel(myModel);
+        if(productsList.isSelectionEmpty()){
+            JOptionPane.showMessageDialog(this, "message", "title", JOptionPane.INFORMATION_MESSAGE);
+        }
+        int result = JOptionPane.showConfirmDialog(this, "Are you sure you wish to delete this Product?");
+        if (result == JOptionPane.YES_OPTION) {
+            productDao.deleteProduct(product);
+            Collection<domain.Product> products = productDao.getProducts();
+            myModel.updateItems(products);
+            productsList.setModel(myModel);
+        }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
