@@ -20,6 +20,10 @@ public class ProductDao {
         productsList.add(product);
     }
     
+    public void deleteProduct(domain.Product product){
+        productsList.remove(product);
+    }
+    
     public Collection<domain.Product> getProducts(){
         return productsList;
     }
