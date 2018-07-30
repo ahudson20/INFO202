@@ -12,7 +12,7 @@ public class Administration {
     public static void main(String[] args) {
         gui.MainMenu main = new gui.MainMenu();
         main.setLocationRelativeTo(null);
-        main.setVisible(true);        
+        main.setVisible(true);
     }
    
 }

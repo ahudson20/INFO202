@@ -6,7 +6,6 @@
 package gui;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  *
@@ -27,7 +26,7 @@ public class ProductViewer extends javax.swing.JDialog {
     public ProductViewer(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        Collection<domain.Product> products = productDao.getProducts();
+        ArrayList<domain.Product> products = productDao.getProducts();
         myModel.updateItems(products);
         productsList.setModel(myModel);
     }
