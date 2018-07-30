@@ -6,7 +6,7 @@
 package gui;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  *
@@ -28,7 +28,7 @@ public class ProductEditor extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         comboBoxCategory.setEditable(true);
-        ArrayList<String> categories = productDao.getCategories();
+        Collection<String> categories = productDao.getCategories();
         myModel.updateItems(categories);
         comboBoxCategory.setModel(myModel);
     }

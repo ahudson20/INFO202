@@ -14,5 +14,4 @@ public class Administration {
         main.setLocationRelativeTo(null);
         main.setVisible(true);        
     }
-   
 }

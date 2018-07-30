@@ -12,8 +12,8 @@ import java.util.*;
  * @author hudan995
  */
 public class ProductDao {
-    private static ArrayList<domain.Product> productsList = new ArrayList<>();
-    private static ArrayList<String> categoryList = new ArrayList<>();
+    private static Collection<domain.Product> productsList = new HashSet<>();
+    private static Collection<String> categoryList = new HashSet<>();
 
     
     public void saveProduct(domain.Product product){
@@ -24,7 +24,7 @@ public class ProductDao {
         return productsList;
     }
     
-    public ArrayList<String> getCategories(){
+    public Collection<String> getCategories(){
         for(domain.Product p : productsList){
             categoryList.add(p.getCategory());
         }
