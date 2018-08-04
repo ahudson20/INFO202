@@ -101,14 +101,15 @@ public class ProductViewer extends javax.swing.JDialog {
         // TODO add your handling code here:
         domain.Product product = (domain.Product)productsList.getSelectedValue();
         if(productsList.isSelectionEmpty()){
-            JOptionPane.showMessageDialog(this, "message", "title", JOptionPane.INFORMATION_MESSAGE);
-        }
-        int result = JOptionPane.showConfirmDialog(this, "Are you sure you wish to delete this Product?");
-        if (result == JOptionPane.YES_OPTION) {
-            productDao.deleteProduct(product);
-            Collection<domain.Product> products = productDao.getProducts();
-            myModel.updateItems(products);
-            productsList.setModel(myModel);
+            JOptionPane.showMessageDialog(this, "Please select a Product before deleting!", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            int result = JOptionPane.showConfirmDialog(this, "Are you sure you wish to delete this Product?");
+            if (result == JOptionPane.YES_OPTION) {
+                productDao.deleteProduct(product);
+                Collection<domain.Product> products = productDao.getProducts();
+                myModel.updateItems(products);
+                productsList.setModel(myModel);
+            }
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
