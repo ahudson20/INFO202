@@ -6,6 +6,7 @@
 package gui;
 
 import domain.Product;
+import gui.helpers.SimpleListModel;
 import java.awt.*;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -29,9 +30,17 @@ public class ProductViewer extends javax.swing.JDialog {
     public ProductViewer(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        Collection<domain.Product> products = productDao.getProducts();
+        Collection<Product> products = productDao.getProducts();
         myModel.updateItems(products);
         productsList.setModel(myModel);
+        
+        //set values in combobox
+        //Create a new SimpleListModel??????????
+        comboFilter.setEditable(false);
+        SimpleListModel newModel = new SimpleListModel();
+        Collection<String> categories = productDao.getCategories();
+        newModel.updateItems(categories);
+        comboFilter.setModel(newModel);
     }
 
     /**
@@ -91,6 +100,11 @@ public class ProductViewer extends javax.swing.JDialog {
         });
 
         comboFilter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboFilterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,6 +207,13 @@ public class ProductViewer extends javax.swing.JDialog {
         myModel.updateItems(p);
         productsList.setModel(myModel);
     }//GEN-LAST:event_buttonSearchActionPerformed
+
+    private void comboFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboFilterActionPerformed
+        String category = (String)comboFilter.getSelectedItem();
+        Collection<Product> filteredProducts = productDao.filterByCategory(category);
+        myModel.updateItems(filteredProducts);
+        productsList.setModel(myModel);
+    }//GEN-LAST:event_comboFilterActionPerformed
 
     /**
      * @param args the command line arguments

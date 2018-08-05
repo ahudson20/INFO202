@@ -5,6 +5,8 @@
  */
 package dao;
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import domain.Product;
 import java.util.*;
 
@@ -16,11 +18,13 @@ public class ProductDao {
     private static Collection<Product> productsList = new HashSet<>();
     private static Collection<String> categoryList = new HashSet<>();
     private static Map<String, Product> idList = new HashMap<>();
+    //private static Multimap<String,Product> mm = HashMultimap.create();
 
     
     public void saveProduct(Product product){
         productsList.add(product);
         idList.put(product.getProductID(), product);
+        //mm.put(product.getProductID(), product);
     }
     
     public void deleteProduct(Product product){
@@ -50,9 +54,13 @@ public class ProductDao {
         return p;
     }
     
-    public Collection<Product> filterByCategory(){
-        //Multimap<String,Product> mm = HashMultimap.create();
-        return null;
+    public Collection<Product> filterByCategory(String category){
+        Multimap<String,Product> mm = HashMultimap.create();
+        for(Product p : productsList){
+            mm.put(p.getCategory(), p);
+        }
+        Collection<Product> elements = mm.get(category);
+        return elements;
     }
 //    
 //    public void deleteById(String id){
