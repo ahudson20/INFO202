@@ -6,9 +6,8 @@
 package gui;
 
 import domain.Product;
-import java.awt.Window;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.awt.*;
+import java.util.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -168,7 +167,6 @@ public class ProductViewer extends javax.swing.JDialog {
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        // TODO add your handling code here:
         Product product = (Product)productsList.getSelectedValue();
 
         if(productsList.isSelectionEmpty()){
@@ -190,7 +188,6 @@ public class ProductViewer extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
-        // TODO add your handling code here:
         String id = txtSearch.getText();
         Product p = productDao.getProductById(id);
         myModel.updateItems(p);

@@ -49,6 +49,11 @@ public class ProductDao {
         }
         return p;
     }
+    
+    public Collection<Product> filterByCategory(){
+        //Multimap<String,Product> mm = HashMultimap.create();
+        return null;
+    }
 //    
 //    public void deleteById(String id){
 //        idList.remove(id);
