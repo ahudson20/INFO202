@@ -18,6 +18,9 @@ public class Product {
     private String category;
     private BigDecimal listPrice;
     private BigDecimal quantityInStock;
+    
+    public Product(){
+    }
 
     public Product(String productID, String name, String description, String category, BigDecimal listPrice, BigDecimal quantityInStock) {
         this.productID = productID;
@@ -28,7 +31,7 @@ public class Product {
         this.quantityInStock = quantityInStock;
     }
 
-    public String getPersonID() {
+    public String getProductID() {
         return productID;
     }
 
@@ -52,7 +55,7 @@ public class Product {
         return quantityInStock;
     }
 
-    public void setPersonID(String productID) {
+    public void setProductID(String productID) {
         this.productID = productID;
     }
 

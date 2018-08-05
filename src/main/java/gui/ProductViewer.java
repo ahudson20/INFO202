@@ -6,6 +6,7 @@
 package gui;
 
 import domain.Product;
+import java.awt.Window;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.swing.JOptionPane;
@@ -47,6 +48,7 @@ public class ProductViewer extends javax.swing.JDialog {
         productsList = new javax.swing.JList<>();
         closeButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        buttonEdit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,6 +68,13 @@ public class ProductViewer extends javax.swing.JDialog {
             }
         });
 
+        buttonEdit.setText("Edit");
+        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,19 +82,22 @@ public class ProductViewer extends javax.swing.JDialog {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonEdit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deleteButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
+                .addGap(63, 63, 63))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteButton)
                     .addComponent(closeButton)
-                    .addComponent(deleteButton))
+                    .addComponent(buttonEdit))
                 .addGap(25, 25, 25))
         );
 
@@ -112,6 +124,28 @@ public class ProductViewer extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
+        // TODO add your handling code here:
+        Product product = (Product)productsList.getSelectedValue();
+
+        if(productsList.isSelectionEmpty()){
+            JOptionPane.showMessageDialog(this, "Please select a Product before editing!", "Warning", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            ProductEditor dialog = new ProductEditor(this, true, product);
+
+            // centre the dialog on the parent window
+            dialog.setLocationRelativeTo(this);
+
+            // make the dialog visible
+            dialog.setVisible(true);
+
+            //will only run after dialog is closed
+            Collection<domain.Product> products = productDao.getProducts();
+            myModel.updateItems(products);
+            productsList.setModel(myModel);
+        }
+    }//GEN-LAST:event_buttonEditActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +190,7 @@ public class ProductViewer extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonEdit;
     private javax.swing.JButton closeButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JScrollPane jScrollPane1;

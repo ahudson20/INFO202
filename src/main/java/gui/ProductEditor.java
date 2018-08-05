@@ -5,6 +5,8 @@
  */
 package gui;
 
+import domain.Product;
+import java.awt.Window;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -20,17 +22,36 @@ public class ProductEditor extends javax.swing.JDialog {
     private dao.ProductDao productDao = new dao.ProductDao();
 
     private gui.helpers.SimpleListModel myModel = new gui.helpers.SimpleListModel();
+    
+    private Product product = new Product();
 
     /**
      * Creates new form ProductGui
      */
-    public ProductEditor(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public ProductEditor(Window parent, boolean modal) {
+        super(parent);
+        super.setModal(modal);
         initComponents();
         comboBoxCategory.setEditable(true);
         Collection<String> categories = productDao.getCategories();
         myModel.updateItems(categories);
         comboBoxCategory.setModel(myModel);
+    }
+    
+    public ProductEditor(Window parent, boolean modal, Product productToEdit) {
+        this(parent, modal);
+
+        this.product = productToEdit;
+        
+        txtID.setText(productToEdit.getProductID());
+        txtName.setText(productToEdit.getName());
+        txtareaDescription.setText(productToEdit.getDescription());
+        comboBoxCategory.setSelectedItem(productToEdit.getCategory());
+        txtPrice.setText(String.valueOf(productToEdit.getListPrice()));
+        txtQuantity.setText(String.valueOf(productToEdit.getQuantityInStock()));
+        
+        txtID.setEditable(false);
+       
     }
 
     /**
@@ -190,7 +211,13 @@ public class ProductEditor extends javax.swing.JDialog {
         System.out.println("Description :" + description + " Category: " + category);
         System.out.println("Price :" + price + " Quantity: " + quantity);*/
         
-        domain.Product product = new domain.Product(id, name, description, category, price, quantity);
+        //product = new domain.Product(id, name, description, category, price, quantity);
+        product.setProductID(priceString);
+        product.setName(name);
+        product.setDescription(description);
+        product.setCategory(category);
+        product.setListPrice(price);
+        product.setQuantityInStock(quantity);
         productDao.saveProduct(product);
         System.out.println(product.toString());
         this.dispose();
