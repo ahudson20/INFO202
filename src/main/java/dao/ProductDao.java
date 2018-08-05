@@ -5,6 +5,7 @@
  */
 package dao;
 
+import domain.Product;
 import java.util.*;
 
 /**
@@ -12,26 +13,59 @@ import java.util.*;
  * @author hudan995
  */
 public class ProductDao {
-    private static Collection<domain.Product> productsList = new HashSet<>();
+    private static Collection<Product> productsList = new HashSet<>();
     private static Collection<String> categoryList = new HashSet<>();
+    private static Map<String, Product> idList = new HashMap<>();
 
     
-    public void saveProduct(domain.Product product){
+    public void saveProduct(Product product){
         productsList.add(product);
+        idList.put(product.getProductID(), product);
     }
     
-    public void deleteProduct(domain.Product product){
+    public void deleteProduct(Product product){
         productsList.remove(product);
     }
     
-    public Collection<domain.Product> getProducts(){
+    public Collection<Product> getProducts(){
         return productsList;
     }
     
     public Collection<String> getCategories(){
-        for(domain.Product p : productsList){
+        for(Product p : productsList){
             categoryList.add(p.getCategory());
         }
         return categoryList;
     }
+//    
+//    public int getIdListSize(){
+//        return idList.size();
+//    }
+//    
+    public Product getProductById(String id){
+        Product p = idList.get(id);
+        if(p == null){
+            return null;
+        }
+        return p;
+    }
+//    
+//    public void deleteById(String id){
+//        idList.remove(id);
+//    }
+//    
+//    public boolean checkProductExists(String id){
+//        boolean doesExist = idList.containsKey(id);
+//        return doesExist;   
+//    }
+//    
+//    public Set<String> getAllIds(){
+//        Set<String> productIDs = idList.keySet();
+//        return productIDs;
+//    }
+//    
+//    public Collection<Product> getAllProducts(){
+//        Collection<Product> values  = idList.values();
+//        return values;
+//    }
 }

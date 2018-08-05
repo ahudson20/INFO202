@@ -212,7 +212,7 @@ public class ProductEditor extends javax.swing.JDialog {
         System.out.println("Price :" + price + " Quantity: " + quantity);*/
         
         //product = new domain.Product(id, name, description, category, price, quantity);
-        product.setProductID(priceString);
+        product.setProductID(id);
         product.setName(name);
         product.setDescription(description);
         product.setCategory(category);
