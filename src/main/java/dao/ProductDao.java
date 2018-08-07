@@ -14,27 +14,31 @@ import java.util.*;
  *
  * @author hudan995
  */
-public class ProductDao {
+public class ProductDao implements ProductInterface{
     private static Collection<Product> productsList = new HashSet<>();
     private static Collection<String> categoryList = new HashSet<>();
     private static Map<String, Product> idList = new HashMap<>();
     //private static Multimap<String,Product> mm = HashMultimap.create();
 
     
+    @Override
     public void saveProduct(Product product){
         productsList.add(product);
         idList.put(product.getProductID(), product);
         //mm.put(product.getProductID(), product);
     }
     
+    @Override
     public void deleteProduct(Product product){
         productsList.remove(product);
     }
     
+    @Override
     public Collection<Product> getProducts(){
         return productsList;
     }
     
+    @Override
     public Collection<String> getCategories(){
         for(Product p : productsList){
             categoryList.add(p.getCategory());
@@ -46,6 +50,7 @@ public class ProductDao {
 //        return idList.size();
 //    }
 //    
+    @Override
     public Product getProductById(String id){
         Product p = idList.get(id);
         if(p == null){
@@ -54,6 +59,7 @@ public class ProductDao {
         return p;
     }
     
+    @Override
     public Collection<Product> filterByCategory(String category){
         Multimap<String,Product> mm = HashMultimap.create();
         for(Product p : productsList){
