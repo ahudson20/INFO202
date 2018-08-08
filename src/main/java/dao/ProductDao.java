@@ -51,7 +51,7 @@ public class ProductDao implements ProductInterface{
 //    }
 //    
     @Override
-    public Product getProductById(String id){
+    public Product getProductById(Integer id){
         Product p = idList.get(id);
         if(p == null){
             return null;

@@ -10,6 +10,7 @@ import domain.Product;
 import java.awt.Window;
 import java.math.BigDecimal;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -198,6 +199,7 @@ public class ProductEditor extends javax.swing.JDialog {
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         // TODO add your handling code here:
+        //txtID.isEditable()
         Integer id = Integer.parseInt(txtID.getText());
         String name = txtName.getText();
         String description = txtareaDescription.getText();
@@ -213,12 +215,22 @@ public class ProductEditor extends javax.swing.JDialog {
         System.out.println("Price :" + price + " Quantity: " + quantity);*/     
         //product = new domain.Product(id, name, description, category, price, quantity);
         
-        product.setProductID(id);
+        /*if(txtID.isEditable() && productDao.getProductById(id) != null){
+            JOptionPane.showMessageDialog(this, "This ID is already in use! Please choose another ID", "Warning", JOptionPane.INFORMATION_MESSAGE);
+            txtID.setText("");
+        }else{*/
+            product.setProductID(id);
+        /*}*/
+        
+        
         product.setName(name);
         product.setDescription(description);
         product.setCategory(category);
         product.setListPrice(price);
         product.setQuantityInStock(quantity);
+        
+        
+        
         productDao.saveProduct(product);
         System.out.println(product.toString());
         this.dispose();

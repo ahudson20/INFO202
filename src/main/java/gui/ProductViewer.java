@@ -203,7 +203,7 @@ public class ProductViewer extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
-        String id = txtSearch.getText();
+        Integer id = Integer.parseInt(txtSearch.getText());
         Product p = productDao.getProductById(id);
         myModel.updateItems(p);
         productsList.setModel(myModel);

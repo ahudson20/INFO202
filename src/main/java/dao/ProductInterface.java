@@ -25,6 +25,6 @@ public interface ProductInterface {
     public void deleteProduct(Product product);
     public Collection<Product> getProducts();
     public Collection<String> getCategories();
-    public Product getProductById(String id);
+    public Product getProductById(Integer id);
     public Collection<Product> filterByCategory(String category);
 }
