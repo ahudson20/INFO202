@@ -17,7 +17,7 @@ import java.util.*;
 public class ProductDao implements ProductInterface{
     private static Collection<Product> productsList = new HashSet<>();
     private static Collection<String> categoryList = new HashSet<>();
-    private static Map<String, Product> idList = new HashMap<>();
+    private static Map<Integer, Product> idList = new HashMap<>();
     //private static Multimap<String,Product> mm = HashMultimap.create();
 
     

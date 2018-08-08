@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  * @author hudan995
  */
 public class Product {
-    private String productID;
+    private Integer productID;
     private String name;
     private String description;
     private String category;
@@ -22,7 +22,7 @@ public class Product {
     public Product(){
     }
 
-    public Product(String productID, String name, String description, String category, BigDecimal listPrice, BigDecimal quantityInStock) {
+    public Product(Integer productID, String name, String description, String category, BigDecimal listPrice, BigDecimal quantityInStock) {
         this.productID = productID;
         this.name = name;
         this.description = description;
@@ -31,7 +31,7 @@ public class Product {
         this.quantityInStock = quantityInStock;
     }
 
-    public String getProductID() {
+    public Integer getProductID() {
         return productID;
     }
 
@@ -55,7 +55,7 @@ public class Product {
         return quantityInStock;
     }
 
-    public void setProductID(String productID) {
+    public void setProductID(Integer productID) {
         this.productID = productID;
     }
 

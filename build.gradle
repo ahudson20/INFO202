@@ -10,4 +10,5 @@ repositories {
 dependencies {
    // https://mvnrepository.com/artifact/com.google.guava/guava
    compile group: 'com.google.guava', name: 'guava', version: '25.1-jre'
+   compile group: 'com.h2database', name: 'h2', version: '1.4.197'
 }

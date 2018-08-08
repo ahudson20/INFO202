@@ -5,6 +5,7 @@
  */
 package gui;
 
+import dao.JdbcProductDao;
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import java.awt.*;
@@ -20,7 +21,7 @@ public class ProductViewer extends javax.swing.JDialog {
     /**
      * Create instance of ProductDAO
      */
-    private dao.ProductDao productDao = new dao.ProductDao();
+    private JdbcProductDao productDao = new JdbcProductDao();
 
     private gui.helpers.SimpleListModel myModel = new gui.helpers.SimpleListModel();
 

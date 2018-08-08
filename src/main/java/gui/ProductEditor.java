@@ -5,6 +5,7 @@
  */
 package gui;
 
+import dao.JdbcProductDao;
 import domain.Product;
 import java.awt.Window;
 import java.math.BigDecimal;
@@ -19,7 +20,7 @@ public class ProductEditor extends javax.swing.JDialog {
      * Create instance of ProductDAO
      * and SimpleListModel
      */
-    private dao.ProductDao productDao = new dao.ProductDao();
+    private JdbcProductDao productDao = new JdbcProductDao();
 
     private gui.helpers.SimpleListModel myModel = new gui.helpers.SimpleListModel();
     
@@ -43,7 +44,7 @@ public class ProductEditor extends javax.swing.JDialog {
 
         this.product = productToEdit;
         
-        txtID.setText(productToEdit.getProductID());
+        txtID.setText(String.valueOf(productToEdit.getProductID()));
         txtName.setText(productToEdit.getName());
         txtareaDescription.setText(productToEdit.getDescription());
         comboBoxCategory.setSelectedItem(productToEdit.getCategory());
@@ -197,7 +198,7 @@ public class ProductEditor extends javax.swing.JDialog {
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
         // TODO add your handling code here:
-        String id = txtID.getText();
+        Integer id = Integer.parseInt(txtID.getText());
         String name = txtName.getText();
         String description = txtareaDescription.getText();
         String category = (String) comboBoxCategory.getSelectedItem();
