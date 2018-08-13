@@ -32,7 +32,7 @@ public class JdbcProductDao implements ProductInterface{
     @Override
     public void saveProduct(Product product) {
         //String sql="insert into student (id, name, mark) values (?,?,?)";
-        String sql = "insert into Product (Product_ID, Product_Name, Description, Category, List_Price, Quantity_In_Stock) values(?,?,?,?,?,?)";
+        String sql = "merge into Product (Product_ID, Product_Name, Description, Category, List_Price, Quantity_In_Stock) values(?,?,?,?,?,?)";
 
     try (
         // get connection to database
