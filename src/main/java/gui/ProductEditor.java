@@ -5,6 +5,7 @@
  */
 package gui;
 
+import dao.DAOException;
 import dao.JdbcProductDao;
 import domain.Product;
 import gui.helpers.ValidationHelper;
@@ -199,49 +200,38 @@ public class ProductEditor extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
-        // TODO add your handling code here:
-        //txtID.isEditable()
-        
-        //Integer id = Integer.parseInt(txtID.getText());
-        Integer id = (Integer) txtID.getValue();
-        String name = txtName.getText();
-        String description = txtareaDescription.getText();
-        String category = (String) comboBoxCategory.getSelectedItem();
-        
-        //String priceString = txtPrice.getValue();
-        //String quantityString = txtQuantity.getText();
-        //BigDecimal price = new BigDecimal(priceString);
-        //BigDecimal quantity = new BigDecimal(quantityString);
-        
-        BigDecimal price = (BigDecimal) txtPrice.getValue();
-        BigDecimal quantity = (BigDecimal) txtQuantity.getValue();
-        
-        
-        /*System.out.println("Name :" + name + " ID: " + id);
-        System.out.println("Description :" + description + " Category: " + category);
-        System.out.println("Price :" + price + " Quantity: " + quantity);*/     
-        //product = new domain.Product(id, name, description, category, price, quantity);
-        
-        if(txtID.isEditable() && productDao.getProductById(id) != null){
-            JOptionPane.showMessageDialog(this, "This ID is already in use! Please choose another ID", "Warning", JOptionPane.INFORMATION_MESSAGE);
-            txtID.setText("");
-            return;
-        }else{
-            product.setProductID(id);
-        }
-        
-        
-        product.setName(name);
-        product.setDescription(description);
-        product.setCategory(category);
-        product.setListPrice(price);
-        product.setQuantityInStock(quantity);
-        
-        
-        if(validation.isObjectValid(product)){
-            productDao.saveProduct(product);
-            System.out.println(product.toString());
-            this.dispose();
+
+        try{
+            Integer id = (Integer) txtID.getValue();
+            String name = txtName.getText();
+            String description = txtareaDescription.getText();
+            String category = (String) comboBoxCategory.getSelectedItem();
+            BigDecimal price = (BigDecimal) txtPrice.getValue();
+            BigDecimal quantity = (BigDecimal) txtQuantity.getValue();
+
+            if(txtID.isEditable() && productDao.getProductById(id) != null){
+                JOptionPane.showMessageDialog(this, "This ID is already in use! Please choose another ID", "Warning", JOptionPane.INFORMATION_MESSAGE);
+                txtID.setText("");
+                return;
+            }else{
+                product.setProductID(id);
+            }
+
+
+            product.setName(name);
+            product.setDescription(description);
+            product.setCategory(category);
+            product.setListPrice(price);
+            product.setQuantityInStock(quantity);
+
+
+            if(validation.isObjectValid(product)){
+                productDao.saveProduct(product);
+                System.out.println(product.toString());
+                this.dispose();
+            }   
+        }catch(DAOException ex){
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_buttonSaveActionPerformed
 
