@@ -37,11 +37,11 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtID" max="32767" attributes="0"/>
                           <Component id="txtName" max="32767" attributes="0"/>
                           <Component id="jScrollPane1" alignment="1" pref="292" max="32767" attributes="0"/>
                           <Component id="comboBoxCategory" max="32767" attributes="0"/>
-                          <Component id="txtPrice" max="32767" attributes="0"/>
+                          <Component id="txtID" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtPrice" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtQuantity" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -61,10 +61,10 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtID" alignment="3" pref="27" max="32767" attributes="0"/>
                   <Component id="labelID" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtID" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -74,7 +74,7 @@
                   <Component id="jScrollPane1" min="-2" pref="95" max="-2" attributes="0"/>
                   <Component id="labelDescription" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="comboBoxCategory" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -82,12 +82,12 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPrice" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPrice" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtQuantity" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -104,8 +104,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Product ID"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtID">
     </Component>
     <Component class="javax.swing.JLabel" name="labelName">
       <Properties>
@@ -159,17 +157,10 @@
         <Property name="text" type="java.lang.String" value="Price"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPrice">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quantity"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtQuantity">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQuantityActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonSave">
       <Properties>
@@ -186,6 +177,12 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCancelActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtID">
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtPrice">
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtQuantity">
     </Component>
   </SubComponents>
 </Form>
