@@ -89,10 +89,8 @@ public class JdbcProductDao implements ProductInterface{
             String category = rs.getString("Category");
             BigDecimal listPrice = rs.getBigDecimal("List_Price");
             BigDecimal quantityInStock = rs.getBigDecimal("Quantity_In_Stock");
-            
-            //BigDecimal mark = rs.getBigDecimal("mark");
 
-            // use the data to create a student object
+            // use the data to create a product object
             Product p = new Product(id, name, description, category, listPrice, quantityInStock);
 
             // and put it in the collection
@@ -165,13 +163,11 @@ public class JdbcProductDao implements ProductInterface{
             String category = rs.getString("Category");
             BigDecimal price = rs.getBigDecimal("List_Price");
             BigDecimal quantity = rs.getBigDecimal("Quantity_In_Stock");
-            //String name = rs.getString("name");
-            //BigDecimal mark = rs.getBigDecimal("mark");
 
             return new Product(pid, name, description, category, price, quantity);
 
         } else {
-            // no student matches given ID so return null
+            // no product matches given ID so return null
             return null;
         }
 
@@ -211,10 +207,8 @@ public class JdbcProductDao implements ProductInterface{
             String c = rs.getString("Category");
             BigDecimal listPrice = rs.getBigDecimal("List_Price");
             BigDecimal quantityInStock = rs.getBigDecimal("Quantity_In_Stock");
-            
-            //BigDecimal mark = rs.getBigDecimal("mark");
 
-            // use the data to create a student object
+            // use the data to create a product object
             Product p = new Product(id, name, description, c, listPrice, quantityInStock);
 
             // and put it in the collection
