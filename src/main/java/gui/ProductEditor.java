@@ -238,10 +238,11 @@ public class ProductEditor extends javax.swing.JDialog {
         product.setQuantityInStock(quantity);
         
         
-        
-        productDao.saveProduct(product);
-        System.out.println(product.toString());
-        this.dispose();
+        if(validation.isObjectValid(product)){
+            productDao.saveProduct(product);
+            System.out.println(product.toString());
+            this.dispose();
+        }
     }//GEN-LAST:event_buttonSaveActionPerformed
 
     private void comboBoxCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxCategoryActionPerformed
