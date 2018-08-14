@@ -70,12 +70,7 @@ editor -> validator : « create »
 
 ' your code goes here
 'note over editor #FF6666 : what happens here?
-editor -> editor : set values: productToEdit
-
-
-
-
-
+editor -> editor : set values in\neditor: productToEdit
 
 
 user <-- editor : product details displayed, ready for editing

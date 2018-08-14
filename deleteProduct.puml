@@ -30,8 +30,8 @@ participant "MainMenu" as menu << frame >>
 participant "ProductViewer" as report << dialog >>
 participant "ProductDatabaseDAO" as dao << DAO >>
 database Database
-'participant "Producteditor" as editor << dialog >>
-'participant "ValidationHelper" as validator
+participant "SimpleListModel\n:model" as model
+
 
 create menu
 main -> menu : « create »
@@ -58,14 +58,14 @@ report--
 user -> report : clicks 'Delete' button
 activate report
 
-report -> report : jList.getSelectedValue() : product
+report -> report : productsList.getSelectedValue() : product
 alt jList selection not empty
     report->user: show confirm dialog
 alt clicks yes
     user -> report: clicks 'Yes' to confirm
     report->dao++ : deleteProduct(product)
 
-    dao ->Database++ : delete from product where product_id
+    dao ->Database++ : delete from product\nwhere product_id = id
     dao--
     Database--
     
@@ -77,7 +77,12 @@ alt clicks yes
     dao--
     'return products
 
-    report -> report : myModel.updateItems(products)
+    'report -> report : myModel.updateItems(products)
+    create model
+    report -> model : « construct »
+    report -> model++ : updateItems(product)
+    model--
+    report -> report : productsList.setModel(model)
     note left: updated products\ndisplayed in viewer
     dao--
 end
