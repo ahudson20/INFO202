@@ -209,7 +209,7 @@ public class ProductEditor extends javax.swing.JDialog {
             BigDecimal price = (BigDecimal) txtPrice.getValue();
             BigDecimal quantity = (BigDecimal) txtQuantity.getValue();
 
-            if(txtID.isEditable() && productDao.getProductById(id) != null){
+            if(txtID.isEditable() && (id != null && productDao.getProductById(id) != null)){
                 JOptionPane.showMessageDialog(this, "This ID is already in use! Please choose another ID", "Warning", JOptionPane.INFORMATION_MESSAGE);
                 txtID.setText("");
                 return;
