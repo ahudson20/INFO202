@@ -22,7 +22,7 @@ skinparam {
 
 }
 
-title Delete Product
+title Search By ID
 
 actor User as user
 participant "Main" as main << main >>
@@ -30,7 +30,8 @@ participant "MainMenu" as menu << frame >>
 participant "ProductViewer" as report << dialog >>
 participant "ProductDatabaseDAO" as dao << DAO >>
 database Database
-'participant "Producteditor" as editor << dialog >>
+participant "SimpleListModel\n:model" as model
+'participant "ProductEditor" as editor << dialog >>
 'participant "ValidationHelper" as validator
 
 create menu
@@ -49,39 +50,24 @@ report -> dao: « create »
 
 note over report: as shown in\n'View Products'\ndiagram
 user <-- report : list of products displayed
-
 deactivate report
 
-user -> report++ : selects a product in the list
+user -> report++ : enter an ID
 report--
 
-user -> report : clicks 'Delete' button
-activate report
+user -> report++ : clicks 'Search'
+report -> dao++ : getProductById(id)
+dao -> Database++ : select * from product\n where Product_ID
+return ResultSet
+dao->dao: reconstruct product\n from ResultSet
+dao --> report: product
+dao--
 
-report -> report : jList.getSelectedValue() : product
-alt jList selection not empty
-    report->user: show confirm dialog
-alt clicks yes
-    user -> report: clicks 'Yes' to confirm
-    report->dao++ : deleteProduct(product)
+create model
+report -> model : « construct »
+report -> model++ : updateItems(product)
+model--
+report -> report : productsList.setModel(model)
 
-    dao ->Database++ : delete from product where product_id
-    dao--
-    Database--
-    
-    report -> dao++ : getProducts()
-    dao -> Database++ : select * from product
-    return ResultSet
-    dao->dao: reconstruct products\n from ResultSet
-    dao --> report : products
-    dao--
-    'return products
-
-    report -> report : myModel.updateItems(products)
-    note left: updated products\ndisplayed in viewer
-    dao--
-end
-else jList selection empty
-    report->user: show warning dialog
-end
+note left : product searched now\nvisible to user
 @enduml

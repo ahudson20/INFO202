@@ -28,8 +28,8 @@ actor User as user
 participant "Main" as main << main >>
 participant "MainMenu" as menu << frame >>
 participant "ProductViewer" as report << dialog >>
-participant "ProductDAO" as dao << DAO >>
-participant "Producteditor" as editor << dialog >>
+participant "ProductDatabaseDAO" as dao << DAO >>
+participant "ProductEditor" as editor << dialog >>
 participant "ValidationHelper" as validator
 
 create menu
@@ -98,9 +98,9 @@ destroy editor
 report -> dao++ : getProducts()
 return products
 
-report -> report : jlist.updateItems(products)
+report -> report : myModel.updateItems(products)
 
-note left: updated product\ndisplayed in report
+note left: updated product\ndisplayed in viewer
 
 @enduml
 
