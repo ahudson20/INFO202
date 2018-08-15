@@ -206,10 +206,15 @@ public class ProductViewer extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
-        Integer id = Integer.parseInt(txtSearch.getText());
+        Integer id = (Integer) txtSearch.getValue();
+        if(id == null){
+            JOptionPane.showMessageDialog(this, "Please enter an ID to search!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         Product p = productDao.getProductById(id);
         myModel.updateItems(p);
         productsList.setModel(myModel);
+        
     }//GEN-LAST:event_buttonSearchActionPerformed
 
     private void comboFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboFilterActionPerformed
