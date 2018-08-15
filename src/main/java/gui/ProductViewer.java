@@ -8,6 +8,7 @@ package gui;
 import dao.JdbcProductDao;
 import domain.Product;
 import gui.helpers.SimpleListModel;
+import gui.helpers.ValidationHelper;
 import java.awt.*;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -24,6 +25,8 @@ public class ProductViewer extends javax.swing.JDialog {
     private JdbcProductDao productDao = new JdbcProductDao();
 
     private gui.helpers.SimpleListModel myModel = new gui.helpers.SimpleListModel();
+    
+    private ValidationHelper validation = new ValidationHelper();
 
     /**
      * Creates new form ProductViewer
@@ -36,12 +39,13 @@ public class ProductViewer extends javax.swing.JDialog {
         productsList.setModel(myModel);
         
         //set values in combobox
-        //Create a new SimpleListModel??????????
         comboFilter.setEditable(false);
         SimpleListModel newModel = new SimpleListModel();
         Collection<String> categories = productDao.getCategories();
         newModel.updateItems(categories);
         comboFilter.setModel(newModel);
+        
+        validation.addTypeFormatter(txtSearch, "#0", Integer.class);
     }
 
     /**
@@ -60,9 +64,9 @@ public class ProductViewer extends javax.swing.JDialog {
         buttonEdit = new javax.swing.JButton();
         labelSearch = new javax.swing.JLabel();
         labelFilter = new javax.swing.JLabel();
-        txtSearch = new javax.swing.JTextField();
         buttonSearch = new javax.swing.JButton();
         comboFilter = new javax.swing.JComboBox<>();
+        txtSearch = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -122,17 +126,16 @@ public class ProductViewer extends javax.swing.JDialog {
                 .addGap(63, 63, 63))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelFilter)
+                    .addComponent(labelSearch))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelSearch)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonSearch))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelFilter)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboFilter, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(comboFilter, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -141,8 +144,8 @@ public class ProductViewer extends javax.swing.JDialog {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSearch)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSearch))
+                    .addComponent(buttonSearch)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelFilter)
@@ -268,6 +271,6 @@ public class ProductViewer extends javax.swing.JDialog {
     private javax.swing.JLabel labelFilter;
     private javax.swing.JLabel labelSearch;
     private javax.swing.JList<Product> productsList;
-    private javax.swing.JTextField txtSearch;
+    private javax.swing.JFormattedTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
