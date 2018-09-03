@@ -19,8 +19,8 @@ import static org.junit.Assert.*;
  * @author anaruhudson
  */
 public class DaoTest {
-    //private ProductDao productDao = new ProductDao();
-    private JdbcProductDao productDao = new JdbcProductDao("jdbc:h2:tcp://localhost:9021/project-testing");
+    private ProductDao productDao = new ProductDao();
+    //private JdbcProductDao productDao = new JdbcProductDao("jdbc:h2:tcp://localhost:9021/project-testing");
     
     private Product prodOne;
     private Product prodTwo;
@@ -57,6 +57,10 @@ public class DaoTest {
     //
     // @Test
     // public void hello() {}
+    //save, delete, getporducts, getbyid: done
+    //getcategories, 
+    //filterbycategory.
+    //
     @Test
     public void testDaoSave() {
         // save the product using DAO
@@ -99,6 +103,32 @@ public class DaoTest {
             }
         }
     }
+    
+    @Test
+    public void testDaoGetAllCategories() {
+        Collection<String> categories = productDao.getCategories();
+        // ensure the result includes the two saved categories
+        assertTrue("prodOne should exist", categories.contains(prodOne.getCategory()));
+        assertTrue("prodTwo should exist", categories.contains(prodTwo.getCategory()));
+        // ensure the result ONLY includes the two saved categories
+        assertEquals("Only 2 categories in result", 2, categories.size());
+    }
+    
+//    @Test
+//    public void testDaoFilterByCategory() {
+//        
+//    }
+    
+    @Test
+    public void testDaoEdit() {
+        String newName = "newName1";
+        this.prodOne.setName(newName);
+        productDao.saveProduct(prodOne);
+        productDao.getProductById(1);
+        assertEquals("name should now be updated", prodOne.getName(), newName);
+    }
+
+    
     
     @Test
     public void testDaoFindById() {
