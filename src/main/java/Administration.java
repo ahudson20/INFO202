@@ -1,3 +1,6 @@
+
+import dao.JdbcProductDao;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,7 +13,8 @@
  */
 public class Administration {
     public static void main(String[] args) {
-        gui.MainMenu main = new gui.MainMenu();
+        JdbcProductDao productDao = new JdbcProductDao();
+        gui.MainMenu main = new gui.MainMenu(productDao);
         main.setLocationRelativeTo(null);
         main.setVisible(true);        
     }

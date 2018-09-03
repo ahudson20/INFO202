@@ -18,7 +18,7 @@ import java.util.Map;
 public interface ProductInterface {
     public static Collection<Product> productsList = new HashSet<>();
     public static Collection<String> categoryList = new HashSet<>();
-    public static Map<String, Product> idList = new HashMap<>();
+    public static Map<Integer, Product> idList = new HashMap<>();
     
     
     public void saveProduct(Product product);
