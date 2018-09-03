@@ -19,7 +19,9 @@ import static org.junit.Assert.*;
  * @author anaruhudson
  */
 public class DaoTest {
-    private ProductDao productDao = new ProductDao();
+    //private ProductDao productDao = new ProductDao();
+    private JdbcProductDao productDao = new JdbcProductDao("jdbc:h2:tcp://localhost:9021/project-testing");
+    
     private Product prodOne;
     private Product prodTwo;
     private Product prodThree;

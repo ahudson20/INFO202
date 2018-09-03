@@ -31,6 +31,8 @@ public class ProductDao implements ProductInterface{
     @Override
     public void deleteProduct(Product product){
         productsList.remove(product);
+        categoryList.remove(product.getCategory());
+        idList.remove(product.getProductID());
     }
     
     @Override
