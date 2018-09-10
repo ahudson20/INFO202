@@ -4,13 +4,43 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html ng-app="ShoppingApp">
     <head>
         <title>sign-up</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/ngStorage.min.js"></script>
+        <script src="js/shopping.js"></script>
     </head>
     <body>
-        <div>sign up content</div>
+        <form ng-controller="CustomerController as custCtrl" ng-submit="custCtrl.registerCustomer(customer)">
+            <fieldset>
+                <legend>Account Details</legend>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" ng-model="customer.username" required>
+            
+            <label for="firstname">First Name</label>
+            <input type="text" name="firstname" id="firstname" ng-model="customer.firstname" required>
+            
+            <label for="lastname">Last Name</label>
+            <input type="text" name="lastname" id="lastname" ng-model="customer.lastname" required>
+            
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" ng-model="customer.email" required>
+            
+            <label for="address">Address</label>
+            <input type="text" name="address" id="address" ng-model="customer.address" required>
+            
+            <label for="creditcard">Credit Card</label>
+            <input type="text" name="creditcard" id="creditcard" ng-model="customer.creditcard" required>
+            
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" ng-model="customer.password" required>
+            
+            <button type="submit">Create Account</button>
+            </fieldset>
+        </form>
     </body>
 </html>

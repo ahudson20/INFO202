@@ -4,13 +4,41 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html ng-app="ShoppingApp">
     <head>
-        <title>TODO supply a title</title>
+        <title>products</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/ngStorage.min.js"></script>
+        <script src="js/shopping.js"></script>
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body ng-controller="ProductController as prodCtrl">
+        <div>products</div>
+        <div>
+            <button>All</button>
+            <button ng-repeat="cat in prodCtrl.categories" ng-click="prodCtrl.selectCategory(cat)">{{cat}}</button>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>name</td>
+                        <td>description</td>
+                        <td>price</td>
+                        <td>quantity</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in prodCtrl.products">
+                        <td>{{product.name}}</td>
+                        <td>{{product.description}}</td>
+                        <td>{{product.listPrice}}</td>
+                        <td>{{product.quantityInStock}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </body>
 </html>
