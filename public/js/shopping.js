@@ -15,12 +15,12 @@ module.factory('categoryDAO', function ($resource) {
 return $resource('/api/categories/:category');
 });
 
-module.factory('registerDAO', function () {
-return ('/api/register/');
+module.factory('registerDAO', function ($resource) {
+return $resource('/api/register/');
 });
 
 module.factory('signInDAO', function ($resource) {
-return $resource('/api/customers/:username');
+    return $resource('/api/customers/:username'); 
 });
 
 module.controller('ProductController', function (productDAO, categoryDAO) {

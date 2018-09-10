@@ -11,7 +11,7 @@ package domain;
  */
 public class Customer {
     private String personID;
-    private String userName;
+    private String username;
     private String firstname;
     private String surname;
     private String password;
@@ -21,9 +21,9 @@ public class Customer {
     
     public Customer(){}
     
-    public Customer(String personID, String userName, String firstname, String surname, String password, String emailAddress, String shippingAddress, String creditCardDetails) {
+    public Customer(String personID, String username, String firstname, String surname, String password, String emailAddress, String shippingAddress, String creditCardDetails) {
         this.personID = personID;
-        this.userName = userName;
+        this.username = username;
         this.firstname = firstname;
         this.surname = surname;
         this.password = password;
@@ -37,7 +37,7 @@ public class Customer {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public String getFirstname() {
@@ -68,8 +68,8 @@ public class Customer {
         this.personID = personID;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     public void setFirstname(String firstname) {

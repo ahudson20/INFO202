@@ -14,7 +14,7 @@ and open the template in the editor.
         <script src="js/ngStorage.min.js"></script>
         <script src="js/shopping.js"></script>
     </head>
-    <body>
+    <body ng-controller="CustomerController as custCtrl">
         <div>Login</div>
         <p>{{custCtrl.signInMessage}}</p>
         <form ng-submit="custCtrl.signIn(username, password)">
