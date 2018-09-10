@@ -55,6 +55,7 @@ public class ProductEditor extends javax.swing.JDialog {
         this(parent, modal, productDao);
 
         this.product = productToEdit;
+        this.setName("productDialog");
         //txtID.setText(String.valueOf(productToEdit.getProductID()));
         txtID.setValue(productToEdit.getProductID());
         txtName.setText(productToEdit.getName());

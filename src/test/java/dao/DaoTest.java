@@ -149,4 +149,30 @@ public class DaoTest {
         assertNull("Product shouldnt exist", n);
         
     }
+    
+    @Test
+    public void testDaoGetProductByCategory(){
+        Collection<Product> pList = productDao.filterByCategory("cat1");
+        Product p = null;
+        while(pList.iterator().hasNext()){
+            p = pList.iterator().next();
+        }
+        if(p != null){
+            //length should be 1
+            assertEquals("Should have only one product", 1, pList.size());
+            //product should be product 1
+            assertEquals("Should have got product 1 in return", prodOne, p);
+        
+            assertEquals(prodOne.getProductID(), p.getProductID());
+            assertEquals(prodOne.getName(), p.getName());
+            assertEquals(prodOne.getDescription(), p.getDescription());
+            assertEquals(prodOne.getCategory(), p.getCategory());
+            assertEquals(prodOne.getListPrice(), p.getListPrice());
+            assertEquals(prodOne.getQuantityInStock(), p.getQuantityInStock());
+        }
+        
+        Collection<Product> nList = productDao.filterByCategory("nothingness");
+        assertEquals("Shouldn't contain anything", 0, nList.size());
+        
+    }
 }

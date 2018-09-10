@@ -18,7 +18,9 @@ public class Customer {
     private String emailAddress;
     private String shippingAddress;
     private String creditCardDetails;
-
+    
+    public Customer(){}
+    
     public Customer(String personID, String userName, String firstname, String surname, String password, String emailAddress, String shippingAddress, String creditCardDetails) {
         this.personID = personID;
         this.userName = userName;
