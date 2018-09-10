@@ -6,6 +6,7 @@
 package gui;
 
 import dao.JdbcProductDao;
+import dao.ProductInterface;
 import domain.Product;
 import gui.helpers.SimpleListModel;
 import gui.helpers.ValidationHelper;
@@ -22,7 +23,7 @@ public class ProductViewer extends javax.swing.JDialog {
     /**
      * Create instance of ProductDAO
      */
-    private JdbcProductDao productDao;
+    private ProductInterface productDao;
     // = new JdbcProductDao()
 
     private gui.helpers.SimpleListModel myModel = new gui.helpers.SimpleListModel();
@@ -32,7 +33,7 @@ public class ProductViewer extends javax.swing.JDialog {
     /**
      * Creates new form ProductViewer
      */
-    public ProductViewer(java.awt.Frame parent, boolean modal, JdbcProductDao productDao) {
+    public ProductViewer(java.awt.Frame parent, boolean modal, ProductInterface productDao) {
         super(parent, modal);
         initComponents();
         this.productDao = productDao;
@@ -48,6 +49,7 @@ public class ProductViewer extends javax.swing.JDialog {
         comboFilter.setModel(newModel);
         
         validation.addTypeFormatter(txtSearch, "#0", Integer.class);
+        productsList.setName("productsList");
     }
 
     /**

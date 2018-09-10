@@ -6,6 +6,7 @@
 package gui;
 
 import dao.JdbcProductDao;
+import dao.ProductInterface;
 
 /**
  *
@@ -13,11 +14,11 @@ import dao.JdbcProductDao;
  */
 public class MainMenu extends javax.swing.JFrame {
     
-    private final JdbcProductDao productDao;
+    private final ProductInterface productDao;
     /**
      * Creates new form MainMenu
      */
-    public MainMenu(JdbcProductDao productDao) {
+    public MainMenu(ProductInterface productDao) {
         initComponents();
         this.productDao = productDao;
     }

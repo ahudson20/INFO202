@@ -7,6 +7,7 @@ package gui;
 
 import dao.DAOException;
 import dao.JdbcProductDao;
+import dao.ProductInterface;
 import domain.Product;
 import gui.helpers.ValidationHelper;
 import java.awt.Window;
@@ -23,7 +24,7 @@ public class ProductEditor extends javax.swing.JDialog {
      * Create instance of ProductDAO
      * and SimpleListModel
      */
-    private final JdbcProductDao productDao;
+    private final ProductInterface productDao;
     // = new JdbcProductDao()
 
     private gui.helpers.SimpleListModel myModel = new gui.helpers.SimpleListModel();
@@ -35,7 +36,7 @@ public class ProductEditor extends javax.swing.JDialog {
     /**
      * Creates new form ProductGui
      */
-    public ProductEditor(Window parent, boolean modal, JdbcProductDao productDao) {
+    public ProductEditor(Window parent, boolean modal, ProductInterface productDao) {
         super(parent);
         super.setModal(modal);
         initComponents();
@@ -49,9 +50,17 @@ public class ProductEditor extends javax.swing.JDialog {
         validation.addTypeFormatter(txtPrice, "#0.00", BigDecimal.class);
         validation.addTypeFormatter(txtQuantity, "#0.00", BigDecimal.class);
         validation.addTypeFormatter(txtID, "#0", Integer.class); 
+        
+        txtName.setName("txtName");
+        txtID.setName("txtID");
+        txtareaDescription.setName("txtareaDescription");
+        comboBoxCategory.setName("comboBoxCategory");
+        txtPrice.setName("txtPrice");
+        txtQuantity.setName("txtQuantity");
+        buttonSave.setName("buttonSave");
     }
     
-    public ProductEditor(Window parent, boolean modal, Product productToEdit, JdbcProductDao productDao) {
+    public ProductEditor(Window parent, boolean modal, Product productToEdit, ProductInterface productDao) {
         this(parent, modal, productDao);
 
         this.product = productToEdit;
