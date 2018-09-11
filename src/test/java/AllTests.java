@@ -17,7 +17,8 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-dao.DaoTest.class
+dao.DaoTest.class,
+gui.guiTest.class
 })
 public class AllTests {
 

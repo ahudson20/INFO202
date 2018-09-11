@@ -58,6 +58,7 @@ public class ProductEditor extends javax.swing.JDialog {
         txtPrice.setName("txtPrice");
         txtQuantity.setName("txtQuantity");
         buttonSave.setName("buttonSave");
+        buttonCancel.setName("buttonCancel");
     }
     
     public ProductEditor(Window parent, boolean modal, Product productToEdit, ProductInterface productDao) {

@@ -50,6 +50,12 @@ public class ProductViewer extends javax.swing.JDialog {
         
         validation.addTypeFormatter(txtSearch, "#0", Integer.class);
         productsList.setName("productsList");
+        buttonEdit.setName("buttonEdit");
+        buttonSearch.setName("buttonSearch");
+        deleteButton.setName("deleteButton");
+        txtSearch.setName("txtSearch");
+        comboFilter.setName("comboFilter");
+
     }
 
     /**
@@ -178,7 +184,7 @@ public class ProductViewer extends javax.swing.JDialog {
         if(productsList.isSelectionEmpty()){
             JOptionPane.showMessageDialog(this, "Please select a Product before deleting!", "Warning", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            int result = JOptionPane.showConfirmDialog(this, "Are you sure you wish to delete this Product?");
+            int result = JOptionPane.showConfirmDialog(this, "Are you sure you wish to delete?", "Confirmation", JOptionPane.YES_NO_CANCEL_OPTION);
             if (result == JOptionPane.YES_OPTION) {
                 productDao.deleteProduct(product);
                 Collection<domain.Product> products = productDao.getProducts();
