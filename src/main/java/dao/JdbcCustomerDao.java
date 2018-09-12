@@ -19,7 +19,7 @@ public class JdbcCustomerDao implements CustomerDao {
     @Override
     public void save(Customer customer) {
         //String sql="insert into student (id, name, mark) values (?,?,?)";
-        String sql = "merge into Customer (Customer_ID, Customer_UserName, First_Name, Last_Name, Email, Address, Credit_Card_Details ,Password) values(?,?,?,?,?,?,?,?)";
+        String sql = "merge into Customer (Customer_UserName, First_Name, Last_Name, Email, Address, Credit_Card_Details ,Password) values(?,?,?,?,?,?,?)";
 
         try (
                 // get connection to database
@@ -29,14 +29,13 @@ public class JdbcCustomerDao implements CustomerDao {
                 PreparedStatement stmt = dbCon.prepareStatement(sql);
         ) {
             // copy the data from the student domain object into the SQL parameters
-            stmt.setInt(1, customer.getPersonID());
-            stmt.setString(2, customer.getUserName());
-            stmt.setString(3, customer.getFirstname());
-            stmt.setString(4, customer.getSurname());
-            stmt.setString(5, customer.getEmailAddress());
-            stmt.setString(6, customer.getShippingAddress());
-            stmt.setString(7, customer.getCreditCardDetails());
-            stmt.setString(8, customer.getPassword());
+            stmt.setString(1, customer.getUserName());
+            stmt.setString(2, customer.getFirstname());
+            stmt.setString(3, customer.getSurname());
+            stmt.setString(4, customer.getEmailAddress());
+            stmt.setString(5, customer.getShippingAddress());
+            stmt.setString(6, customer.getCreditCardDetails());
+            stmt.setString(7, customer.getPassword());
 
             stmt.executeUpdate();  // execute the statement
 

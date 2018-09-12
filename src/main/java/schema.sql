@@ -24,9 +24,9 @@ values (1, 'Chair', 'Red', 'Furniture', 50, 10);
 values (1, 'Table', 'Black', 'Furniture', 100.0, 10);
 values (1, 'Pen', 'Orange', 'Misc', 35, 10);*/
 
-/*create table Customer(
-Customer_ID integer,
-Customer_UserName varchar(50) not null,
+create table Customer(
+Customer_ID int not null AUTO_INCREMENT,
+Customer_UserName varchar(50) not null unique,
 First_Name varchar(30) not null,
 Last_Name varchar(30) not null,
 Email varchar(30) not null,
@@ -36,5 +36,6 @@ Password varchar(20) not null,
 constraint Customer_PK primary key (Customer_ID)
 );
 
-insert into Customer (Customer_ID, Customer_UserName, First_Name, Last_Name, Email, Address, Credit_Card_Details ,Password)
-values (1, 'testuser', 'john', 'smith', 'johnsmith@email.com', '123 john street', '123456789 123' ,'password');*/
+insert into Customer (Customer_UserName, First_Name, Last_Name, Email, Address, Credit_Card_Details ,Password)
+values ('testuser', 'john', 'smith', 'johnsmith@email.com', '123 john street', '123456789 123' ,'password');
+values ('testseconduser', 'boris', 'johnson', 'borisjonhson@email.com', '123 boris street', '987654321 123' ,'password');
