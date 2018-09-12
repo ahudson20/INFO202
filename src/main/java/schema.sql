@@ -23,3 +23,18 @@ values (1, 'Bag', 'Green', 'Misc', 60, 10);
 values (1, 'Chair', 'Red', 'Furniture', 50, 10);
 values (1, 'Table', 'Black', 'Furniture', 100.0, 10);
 values (1, 'Pen', 'Orange', 'Misc', 35, 10);*/
+
+/*create table Customer(
+Customer_ID integer,
+Customer_UserName varchar(50) not null,
+First_Name varchar(30) not null,
+Last_Name varchar(30) not null,
+Email varchar(30) not null,
+Address varchar(50) not null,
+Credit_Card_Details varchar(50) not null,
+Password varchar(20) not null,
+constraint Customer_PK primary key (Customer_ID)
+);
+
+insert into Customer (Customer_ID, Customer_UserName, First_Name, Last_Name, Email, Address, Credit_Card_Details ,Password)
+values (1, 'testuser', 'john', 'smith', 'johnsmith@email.com', '123 john street', '123456789 123' ,'password');*/

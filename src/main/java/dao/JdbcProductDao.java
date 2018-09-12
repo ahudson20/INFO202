@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -146,7 +147,7 @@ public class JdbcProductDao implements ProductInterface{
             // and put it in the collection
             cList.add(c);
         }
-
+        Collections.sort(cList);
         return cList;
 
     } catch (SQLException ex) {
@@ -232,7 +233,6 @@ public class JdbcProductDao implements ProductInterface{
             // and put it in the collection
             pList.add(p);
         }
-
         return pList;
 
     } catch (SQLException ex) {

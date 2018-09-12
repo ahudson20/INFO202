@@ -59,7 +59,7 @@ public class guiTest {
  
 	// Slow down the robot a little bit - default is 30 (milliseconds).
 	// Do NOT make it less than 5 or you will have thread-race problems.
-	robot.settings().delayBetweenEvents(250);
+	robot.settings().delayBetweenEvents(200);
         
 	// add some products for testing with
         this.prodOne = new Product(1, "name1", "cat1", "desc1",
@@ -247,17 +247,37 @@ public class guiTest {
             confirmDialog.button(withText("Yes")).click();
 
             model = (SimpleListModel) fixture.list("productsList").target().getModel();
-            // check the contents, check that prodOne is there, and that there is 1 prodcut present
+            // check the contents, check that prodOne is there, and that there is 2 prodcut present
             assertTrue("list contains the expected product", !(model.contains(testProduct)));
             assertEquals("list contains the correct number of products", 2, model.getSize());
 
+            //dont select and product and try to delete
+            fixture.button("deleteButton").click();
 
-//            fixture.comboBox("comboFilter").selectItem("desc2");
-//
-//            model = (SimpleListModel) fixture.list("productsList").target().getModel();
-//            // check the contents, check that prodOne is there, and that there is 1 prodcut present
-//            assertTrue("list contains the expected product", model.contains(prodTwo));
-//            assertEquals("list contains the correct number of products", 1, model.getSize());
+            // ensure a confirmation dialog is displayed
+            DialogFixture errorDeleteDialog = fixture.dialog(withTitle("Warning").andShowing()).requireVisible();
+
+            // click the Yes button on the confirmation dialog
+            errorDeleteDialog.button(withText("OK")).click();
+
+            model = (SimpleListModel) fixture.list("productsList").target().getModel();
+            // check the contents, check that prodOne is there, and that there is 2 prodcut present
+            assertTrue("list contains the expected product", !(model.contains(testProduct)));
+            assertEquals("list contains the correct number of products", 2, model.getSize());
+
+            //dont select and product and try to edit
+            fixture.button("buttonEdit").click();
+
+            // ensure a confirmation dialog is displayed
+            DialogFixture errorEditDialog = fixture.dialog(withTitle("Warning").andShowing()).requireVisible();
+
+            // click the Yes button on the confirmation dialog
+            errorEditDialog.button(withText("OK")).click();
+
+            model = (SimpleListModel) fixture.list("productsList").target().getModel();
+            // check the contents, check that prodOne is there, and that there is 2 prodcut present
+            assertTrue("list contains the expected product", !(model.contains(testProduct)));
+            assertEquals("list contains the correct number of products", 2, model.getSize());
 
         }
 }

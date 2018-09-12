@@ -6,18 +6,16 @@
 package dao;
 
 import domain.Product;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+
+import java.util.*;
 
 /**
  *
  * @author anaruhudson
  */
 public interface ProductInterface {
-    public static Collection<Product> productsList = new HashSet<>();
-    public static Collection<String> categoryList = new HashSet<>();
+    public static Collection<Product> productsList = new HashSet<>();//TreeSet??
+    public static Collection<String> categoryList = new TreeSet<>();
     public static Map<Integer, Product> idList = new HashMap<>();
     
     

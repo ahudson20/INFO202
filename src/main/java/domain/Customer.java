@@ -10,7 +10,7 @@ package domain;
  * @author anaruhudson
  */
 public class Customer {
-    private String personID;
+    private Integer personID;
     private String username;
     private String firstname;
     private String surname;
@@ -21,7 +21,7 @@ public class Customer {
     
     public Customer(){}
     
-    public Customer(String personID, String username, String firstname, String surname, String password, String emailAddress, String shippingAddress, String creditCardDetails) {
+    public Customer(Integer personID, String username, String firstname, String surname, String password, String emailAddress, String shippingAddress, String creditCardDetails) {
         this.personID = personID;
         this.username = username;
         this.firstname = firstname;
@@ -32,7 +32,7 @@ public class Customer {
         this.creditCardDetails = creditCardDetails;
     }
 
-    public String getPersonID() {
+    public Integer getPersonID() {
         return personID;
     }
 
@@ -64,7 +64,7 @@ public class Customer {
         return creditCardDetails;
     }
 
-    public void setPersonID(String personID) {
+    public void setPersonID(Integer personID) {
         this.personID = personID;
     }
 
