@@ -15,9 +15,10 @@ and open the template in the editor.
         <script src="js/shopping.js"></script>
     </head>
     <body ng-controller="ProductController as prodCtrl">
-        <div>products</div>
+        <div>Products</div>
+        <div ng-include="'menu.html'"></div>
         <div>
-            <button>All</button>
+            <button ng-click="prodCtrl.selectAll()">All</button>
             <button ng-repeat="cat in prodCtrl.categories" ng-click="prodCtrl.selectCategory(cat)">{{cat}}</button>
         </div>
         <div>
@@ -28,6 +29,7 @@ and open the template in the editor.
                         <td>description</td>
                         <td>price</td>
                         <td>quantity</td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +38,7 @@ and open the template in the editor.
                         <td>{{product.description}}</td>
                         <td>{{product.listPrice}}</td>
                         <td>{{product.quantityInStock}}</td>
+                        <td><button>BUY</button></td>
                     </tr>
                 </tbody>
             </table>

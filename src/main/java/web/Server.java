@@ -6,6 +6,7 @@
 package web;
 
 import dao.CustomerCollectionsDAO;
+import dao.JdbcCustomerDao;
 import dao.JdbcProductDao;
 import java.util.concurrent.CompletableFuture;
 import org.jooby.Jooby;
@@ -17,7 +18,7 @@ import org.jooby.json.Gzon;
  */
 public class Server extends Jooby{
     private JdbcProductDao productDao = new JdbcProductDao();
-    private CustomerCollectionsDAO custDao = new CustomerCollectionsDAO();
+    private JdbcCustomerDao custDao = new JdbcCustomerDao();
     
     public Server(){
         port(8080);

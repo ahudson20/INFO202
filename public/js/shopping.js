@@ -24,24 +24,26 @@ module.factory('signInDAO', function ($resource) {
 });
 
 module.controller('ProductController', function (productDAO, categoryDAO) {
-    //alert("in controller");
     this.products = productDAO.query();
     // load the categories
     this.categories = categoryDAO.query();
+
+    //this.allProducts = productDaoAll.query();
     
     // click handler for the category filter buttons
     this.selectCategory = function (selectedCat) {
-        alert("Category selected: " + selectedCat);
         this.products = categoryDAO.query({"category": selectedCat});
     };
+
+    this.selectAll = function (){
+        this.products = productDAO.query();
+    }
 });
 
 module.controller('CustomerController', function (registerDAO, signInDAO, $sessionStorage, $window) {
     //alert("in controller");
     this.signInMessage = "Please sign in to continue.";
     this.registerCustomer = function (customer) {
-        alert("register customer");
-        console.log(customer);
         registerDAO.save(null, customer);
     };
     
@@ -55,7 +57,7 @@ module.controller('CustomerController', function (registerDAO, signInDAO, $sessi
             // also store the retrieved customer
             $sessionStorage.customer = customer;
             // redirect to home
-            $window.location.href = '.';
+            $window.location.href = 'index.html';
             },
             // fail
             function () {

@@ -19,7 +19,7 @@ public class JdbcCustomerDao implements CustomerDao {
     @Override
     public void save(Customer customer) {
         //String sql="insert into student (id, name, mark) values (?,?,?)";
-        String sql = "merge into Customer (Customer_UserName, First_Name, Last_Name, Email, Address, Credit_Card_Details ,Password) values(?,?,?,?,?,?,?)";
+        String sql = "insert into Customer (Customer_UserName, First_Name, Last_Name, Email, Address, Credit_Card_Details ,Password) values(?,?,?,?,?,?,?)";
 
         try (
                 // get connection to database

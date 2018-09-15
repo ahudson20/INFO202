@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ShoppingApp">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-resource.min.js"></script>
+    <script src="js/ngStorage.min.js"></script>
+    <script src="js/shopping.js"></script>
+    <title>Purchase</title>
+</head>
+<body>
+<div ng-include="'menu.html'"></div>
+<div>Purchase</div>
+<table>
+    <tbody>
+    <tr>
+        <th>ID</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th>Quantity Available</th>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+<form>
+    <fieldset>
+        <legend>Quantity to buy</legend>
+        <label for="quantity">How many?</label>
+        <input type="number" name="quantity" id="quantity">
+        <button type="submit">Add to Cart</button>
+    </fieldset>
+</form>
+</body>
+</html>
