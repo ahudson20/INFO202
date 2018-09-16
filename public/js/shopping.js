@@ -37,6 +37,13 @@ module.controller('ProductController', function (productDAO, categoryDAO) {
 
     this.selectAll = function (){
         this.products = productDAO.query();
+    };
+
+    let selectedProduct;
+    this.onSelect = function (product) {
+        alert("hello");
+        selectedProduct = product;
+        $window.location.href = 'purchase.html';
     }
 });
 
@@ -65,4 +72,19 @@ module.controller('CustomerController', function (registerDAO, signInDAO, $sessi
             }
         );
     };
+
+    this.checkSignIn = function () {
+        if($sessionStorage.customer)  {
+            // customer exists in session storage
+            this.signedIn = true;
+        }else{
+            this.signedIn = false;
+        }
+    };
+
+    this.signOut = function () {
+        $sessionStorage.$reset();
+        this.signedIn = false;
+        $window.location.href = 'index.html';
+    }
 });

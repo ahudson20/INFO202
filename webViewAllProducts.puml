@@ -1,0 +1,28 @@
+@startuml
+' use strict UML mode
+skinparam style strictuml
+
+actor "Customer" as customer
+
+participant "Browser" as browser
+
+customer->browser++: click Browse Products
+
+Participant "ProductController" as productcontroller
+browser->productcontroller++
+
+Participant "Jooby Module" as joobymodule
+productcontroller->joobymodule++: productDao.query()
+
+Participant "ProductDAO" as productdao
+joobymodule->productdao++: productDao.getProductById(id)
+productdao-->joobymodule: Products
+productdao--
+joobymodule-->productcontroller: Products
+joobymodule--
+productcontroller-->browser: Products
+productcontroller--
+browser-->customer: view Products
+browser--
+
+@enduml

@@ -11,27 +11,27 @@
 <body>
 <div ng-include="'menu.html'"></div>
 <div>Purchase</div>
-<table>
+<table ng-controller="ProductController as prodCtrl">
     <tbody>
     <tr>
         <th>ID</th>
-        <td></td>
+        <td>{{prodCtrl.selectedProduct.id}}</td>
     </tr>
     <tr>
         <th>Name</th>
-        <td></td>
+        <td>{{prodCtrl.selectedProduct.name}}</td>
     </tr>
     <tr>
         <th>Description</th>
-        <td></td>
+        <td>{{prodCtrl.selectedPRoduct.description}}</td>
     </tr>
     <tr>
         <th>Price</th>
-        <td></td>
+        <td>{{prodCtrl.selectedProduct.listPrice}}</td>
     </tr>
     <tr>
         <th>Quantity Available</th>
-        <td></td>
+        <td>{{prodCtrl.selectedProduct.quantityInStock}}</td>
     </tr>
     </tbody>
 </table>

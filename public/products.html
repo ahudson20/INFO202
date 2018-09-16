@@ -38,7 +38,7 @@ and open the template in the editor.
                         <td>{{product.description}}</td>
                         <td>{{product.listPrice}}</td>
                         <td>{{product.quantityInStock}}</td>
-                        <td><button>BUY</button></td>
+                        <td><button type="button" ng-click="prodCtrl.onSelect(product)">BUY</button></td>
                     </tr>
                 </tbody>
             </table>
