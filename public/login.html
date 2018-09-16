@@ -15,7 +15,7 @@ and open the template in the editor.
         <script src="js/shopping.js"></script>
     </head>
     <body ng-controller="CustomerController as custCtrl">
-        <div>Login</div>
+    <div ng-include="'menu.html'"></div>
         <p>{{custCtrl.signInMessage}}</p>
         <form ng-submit="custCtrl.signIn(username, password)">
             <fieldset>
