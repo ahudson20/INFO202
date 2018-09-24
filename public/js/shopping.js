@@ -25,21 +25,21 @@ class SaleItem {
 class ShoppingCart {
 
     constructor() {
-        this.items = new Array();
+        this.saleList = new Array();
     }
     // sessionData.saleList
     reconstruct(sessionData) {
-        for (let item of sessionData.items) {
+        for (let item of sessionData.saleList) {
             this.addItem(Object.assign(new SaleItem(), item));
         }
     }
 
     getItems() {
-        return this.items;
+        return this.saleList;
     }
 
     addItem(item) {
-        this.items.push(item);
+        this.saleList.push(item);
     }
 
     setCustomer(customer) {
@@ -48,7 +48,7 @@ class ShoppingCart {
 
     getTotal() {
         let total = 0;
-        for (let item of this.items) {
+        for (let item of this.saleList) {
             total += item.getItemTotal();
         }
         return total;
@@ -93,7 +93,7 @@ module.factory('cart', function ($sessionStorage) {
     return cart;
 });
 
-module.controller('CartController', function (cart, $sessionStorage, $window) {
+module.controller('CartController', function (cart, $sessionStorage, $window, saveDAO) {
     this.items = cart.getItems();
     this.total = cart.getTotal();
 
@@ -101,19 +101,21 @@ module.controller('CartController', function (cart, $sessionStorage, $window) {
         $sessionStorage.selectedProduct = product;
         $window.location.href = 'purchase.html';
     };
-});
-
-module.controller('BuyController', function ($sessionStorage, $window ,cart, saveDAO) {
+    
     this.selectedProduct = $sessionStorage.selectedProduct;
 
     this.addToCartButton = function(quantity){
+        console.log(quantity);
         let product = $sessionStorage.selectedProduct;
         let p = new SaleItem(product, quantity);
         cart.addItem(p);
+        //cart.addItem(new SaleItem(this.selectedProduct, quantity));
         $sessionStorage.cart = cart;
         $window.location.href = "cart.html";
     };
-
+    
+//    this.saleList = $sessionStorage.cart;
+    
     this.cartButton = function(){
         let customer = $sessionStorage.customer;
         cart.setCustomer(customer);

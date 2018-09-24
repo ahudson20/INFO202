@@ -14,7 +14,7 @@ and open the template in the editor.
         <script src="js/ngStorage.min.js"></script>
         <script src="js/shopping.js"></script>
     </head>
-    <body ng-controller="BuyController as buyCtrl">
+    <body ng-controller="CartController as cartCtrl">
         <div ng-include="'menu.html'"></div>
         <table>
             <thead>
@@ -26,9 +26,14 @@ and open the template in the editor.
                 </tr>
             </thead>
             <tbody>
-
+                <tr ng-repeat="item in cartCtrl.items">
+                        <td>{{item.product.name}}</td>
+                        <td>{{item.salePrice}}</td>
+                        <td>{{item.quantityPurchased}}</td>
+                        <td>{{item.getItemTotal()}}</td>
+                    </tr>
             </tbody>
         </table>
+        <button type="button" ng-click="cartCtrl.cartButton()">Checkout Cart</button>
     </body>
-    <button type="button" ng-click="buyCtrl.cartButton()">Checkout Cart</button>
 </html>

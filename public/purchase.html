@@ -11,36 +11,32 @@
 <body>
 <div ng-include="'menu.html'"></div>
 <div>Purchase</div>
-<table ng-controller="BuyController as buyCtrl">
+<table ng-controller="CartController as cartCtrl">
     <tbody>
-    <!--<tr>-->
-        <!--<th>ID</th>-->
-        <!--<td>{{buyCtrl.selectedProduct.id}}</td>-->
-    <!--</tr>-->
     <tr>
         <th>Name</th>
-        <td>{{buyCtrl.selectedProduct.name}}</td>
+        <td>{{cartCtrl.selectedProduct.name}}</td>
     </tr>
     <tr>
         <th>Description</th>
-        <td>{{buyCtrl.selectedProduct.description}}</td>
+        <td>{{cartCtrl.selectedProduct.description}}</td>
     </tr>
     <tr>
         <th>Price</th>
-        <td>{{buyCtrl.selectedProduct.listPrice}}</td>
+        <td>{{cartCtrl.selectedProduct.listPrice}}</td>
     </tr>
     <tr>
         <th>Quantity Available</th>
-        <td>{{buyCtrl.selectedProduct.quantityInStock}}</td>
+        <td>{{cartCtrl.selectedProduct.quantityInStock}}</td>
     </tr>
     </tbody>
 </table>
-<form ng-controller="BuyController as buyCtrl">
+<form ng-controller="CartController as cartCtrl">
     <fieldset>
         <legend>Quantity to buy</legend>
         <label for="quantity">How many?</label>
-        <input type="number" name="quantity" id="quantity">
-        <button type="submit" ng-click="buyCtrl.addToCartButton(quantity)">Add to Cart</button>
+        <input type="number" name="quantity" id="quantity" ng-model="quantity">
+        <button type="submit" ng-click="cartCtrl.addToCartButton(quantity)">Add to Cart</button>
     </fieldset>
 </form>
 </body>
