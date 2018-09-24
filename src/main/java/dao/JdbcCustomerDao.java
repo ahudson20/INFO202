@@ -74,7 +74,7 @@ public class JdbcCustomerDao implements CustomerDao {
                 String creditCard = rs.getString("Credit_Card_Details");
                 String password = rs.getString("Password");
 
-                return new Customer(cid, userName, firstName, lastName, email, address, creditCard ,password);
+                return new Customer(cid, userName, firstName, lastName, password, email, address,creditCard);
 
             } else {
                 // no product matches given ID so return null
