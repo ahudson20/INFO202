@@ -19,6 +19,8 @@ import org.jooby.json.Gzon;
 public class Server extends Jooby{
     private JdbcProductDao productDao = new JdbcProductDao();
     private JdbcCustomerDao custDao = new JdbcCustomerDao();
+
+//    private JdbcCustomerDao custDao = new JdbcCustomerDao();
     
     public Server(){
         port(8080);
@@ -30,6 +32,7 @@ public class Server extends Jooby{
     use(new Gzon());
     use(new ProductModule(productDao));
     use(new CustomerModule(custDao));
+    use(new SaleModule(/*TODO: saleDAO*/));
     use(new AssetModule());
     }
     

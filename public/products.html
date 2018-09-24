@@ -32,13 +32,13 @@ and open the template in the editor.
                         <td></td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody ng-controller="CartController as cartCtrl">
                     <tr ng-repeat="product in prodCtrl.products">
                         <td>{{product.name}}</td>
                         <td>{{product.description}}</td>
                         <td>{{product.listPrice}}</td>
                         <td>{{product.quantityInStock}}</td>
-                        <td><button type="button" ng-click="prodCtrl.onSelect(product)">BUY</button></td>
+                        <td><button type="button" ng-click="cartCtrl.buyButton(product)">BUY</button></td>
                     </tr>
                 </tbody>
             </table>
