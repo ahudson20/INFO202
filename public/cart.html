@@ -14,7 +14,21 @@ and open the template in the editor.
         <script src="js/ngStorage.min.js"></script>
         <script src="js/shopping.js"></script>
     </head>
-    <body>
+    <body ng-controller="BuyController as buyCtrl">
         <div ng-include="'menu.html'"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     </body>
+    <button type="button" ng-click="buyCtrl.cartButton()">Checkout Cart</button>
 </html>

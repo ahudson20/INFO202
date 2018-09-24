@@ -9,6 +9,8 @@ import dao.CustomerCollectionsDAO;
 import dao.JdbcCustomerDao;
 import dao.JdbcProductDao;
 import java.util.concurrent.CompletableFuture;
+
+import dao.SaleJdbcDAO;
 import org.jooby.Jooby;
 import org.jooby.json.Gzon;
 
@@ -19,8 +21,7 @@ import org.jooby.json.Gzon;
 public class Server extends Jooby{
     private JdbcProductDao productDao = new JdbcProductDao();
     private JdbcCustomerDao custDao = new JdbcCustomerDao();
-
-//    private JdbcCustomerDao custDao = new JdbcCustomerDao();
+    private SaleJdbcDAO saleDao = new SaleJdbcDAO();
     
     public Server(){
         port(8080);
@@ -32,7 +33,7 @@ public class Server extends Jooby{
     use(new Gzon());
     use(new ProductModule(productDao));
     use(new CustomerModule(custDao));
-    use(new SaleModule(/*TODO: saleDAO*/));
+    use(new SaleModule(saleDao));
     use(new AssetModule());
     }
     

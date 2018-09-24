@@ -27,9 +27,9 @@ class ShoppingCart {
     constructor() {
         this.items = new Array();
     }
-
+    // sessionData.saleList
     reconstruct(sessionData) {
-        for (let item of sessionData.saleList) {
+        for (let item of sessionData.items) {
             this.addItem(Object.assign(new SaleItem(), item));
         }
     }
@@ -107,7 +107,7 @@ module.controller('BuyController', function ($sessionStorage, $window ,cart, sav
     this.selectedProduct = $sessionStorage.selectedProduct;
 
     this.addToCartButton = function(quantity){
-        let product = $sessionStorage;
+        let product = $sessionStorage.selectedProduct;
         let p = new SaleItem(product, quantity);
         cart.addItem(p);
         $sessionStorage.cart = cart;
@@ -117,7 +117,7 @@ module.controller('BuyController', function ($sessionStorage, $window ,cart, sav
     this.cartButton = function(){
         let customer = $sessionStorage.customer;
         cart.setCustomer(customer);
-        saveDAOsave.save();
+        saveDAO.save(cart);
         $sessionStorage.$reset();
         $window.location.href = "complete.html";
     };
@@ -138,13 +138,6 @@ module.controller('ProductController', function (productDAO, categoryDAO) {
     this.selectAll = function (){
         this.products = productDAO.query();
     };
-
-    // let selectedProduct;
-    // this.onSelect = function (product) {
-    //     alert("hello");
-    //     selectedProduct = product;
-    //     $window.location.href = 'purchase.html';
-    // }
 });
 
 module.controller('CustomerController', function (registerDAO, signInDAO, $sessionStorage, $window) {
