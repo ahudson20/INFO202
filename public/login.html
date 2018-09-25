@@ -13,23 +13,33 @@ and open the template in the editor.
         <script src="js/angular-resource.min.js"></script>
         <script src="js/ngStorage.min.js"></script>
         <script src="js/shopping.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body ng-controller="CustomerController as custCtrl">
-    <div ng-include="'menu.html'"></div>
-        <p>{{custCtrl.signInMessage}}</p>
+
+    <div>
+        <div ng-include="'menu.html'"></div>
+    </div>
+
+    <div id="main-header">
+        <h1>Sign In</h1>
+    </div>
+
+        <p class="general-center">{{custCtrl.signInMessage}}</p>
+
         <form ng-submit="custCtrl.signIn(username, password)">
-            <fieldset>
+            <fieldset id="sign-in">
                 <legend>Login</legend>
                 
-                <label for="username">User Name</label>
+                <label for="username" id="label-username">User Name</label>
                 <input type="text" name="username" id="username" ng-model="username" required>
                 
-                <label for="password">Password</label>
+                <label for="password" id="label-password">Password</label>
                 <input type="password" name="password" id="password" ng-model="password" required>
                 
-                <button type="submit">Sign In</button>
+                <button type="submit" id="sign-in-button">Sign In</button>
             </fieldset>
         </form>
-    <p>If you dont have an account<a href="signup.html"> create one here</a>.</p>
+    <p class="general-center">If you dont have an account<a href="signup.html"> create one here</a>.</p>
     </body>
 </html>

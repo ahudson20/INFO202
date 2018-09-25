@@ -13,10 +13,19 @@ and open the template in the editor.
         <script src="js/angular-resource.min.js"></script>
         <script src="js/ngStorage.min.js"></script>
         <script src="js/shopping.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
-    <div ng-include="'menu.html'"></div>
-        <form ng-controller="CustomerController as custCtrl" ng-submit="custCtrl.registerCustomer(customer)">
+
+    <div>
+        <div ng-include="'menu.html'"></div>
+    </div>
+
+    <div id="main-header">
+        <h1>Create an Account</h1>
+    </div>
+
+        <form ng-controller="CustomerController as custCtrl" ng-submit="custCtrl.registerCustomer(customer)" id="register-form">
             <fieldset>
                 <legend>Account Details</legend>
             <label for="username">Username</label>

@@ -1,0 +1,160 @@
+html, body{
+    padding: 0;
+    margin: 0;
+}
+
+.general-center{
+    text-align: center;
+}
+
+#main-header{
+    width: 100%;
+    height: 5rem;
+    color: gold;
+    background-color: navy;
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+#menu{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#menu a{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-decoration: none;
+}
+
+#menu a:link, a:visited {
+    background-color: navy;
+    color: gold;
+    padding: 0.875rem 0.6rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+#menu a:hover, a:active {
+    background-color: blue;
+}
+
+#sign-in{
+    height: 9rem;
+    width: 50%;
+    margin-left: 25%;
+}
+
+#username{
+    margin-top: 1.25rem;
+    width: 70%;
+    margin-left: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+#password{
+    width: 70%;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+#sign-in-button{
+    margin-left: 45%;
+}
+
+#register-form{
+    margin-top: 2rem;
+    width: 50%;
+    margin-left: 25%;
+}
+
+#register-form fieldset{
+    height: 25rem;
+}
+
+#register-form fieldset input{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    width: 76%;
+}
+
+#register-form fieldset label{
+    display: inline-block;
+    width: 4.7rem;
+}
+
+#register-form fieldset button{
+    margin-left: 40%;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+#button-filters{
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#button-filters button{
+    height: 2rem;
+    width: 4rem;
+    color: gold;
+    background-color: navy;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+#products-table{
+    width: 70%;
+    margin-left: 15%;
+}
+
+#products-table td{
+    text-align: center;
+}
+
+#purchase-table{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#purchase-table th{
+    text-align: left;
+}
+
+#purchase-table td{
+    text-align: center;
+}
+
+#purchase-form{
+    width: 40%;
+    margin-left: 30%;
+}
+
+#cart-table{
+    margin-top: 2rem;
+    width: 70%;
+    margin-left: 15%;
+    margin-bottom: 1rem;
+}
+
+#checkout-button{
+    margin-left: 45%;
+    height: 3rem;
+    width: 6rem;
+    color: gold;
+    background-color: navy;
+    font-size: 1rem;
+}

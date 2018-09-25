@@ -6,12 +6,19 @@
     <script src="js/angular-resource.min.js"></script>
     <script src="js/ngStorage.min.js"></script>
     <script src="js/shopping.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Purchase</title>
 </head>
 <body>
-<div ng-include="'menu.html'"></div>
-<div>Purchase</div>
-<table ng-controller="CartController as cartCtrl">
+
+<div>
+    <div ng-include="'menu.html'"></div>
+</div>
+<div id="main-header">
+    <h1>How many do you want to buy?</h1>
+</div>
+
+<table ng-controller="CartController as cartCtrl" id="purchase-table">
     <tbody>
     <tr>
         <th>Name</th>
@@ -31,7 +38,8 @@
     </tr>
     </tbody>
 </table>
-<form ng-controller="CartController as cartCtrl">
+
+<form ng-controller="CartController as cartCtrl" id="purchase-form">
     <fieldset>
         <legend>Quantity to buy</legend>
         <label for="quantity">How many?</label>
@@ -39,5 +47,6 @@
         <button type="submit" ng-click="cartCtrl.addToCartButton(quantity)">Add to Cart</button>
     </fieldset>
 </form>
+
 </body>
 </html>

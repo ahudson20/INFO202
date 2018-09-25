@@ -6,17 +6,25 @@ and open the template in the editor.
 -->
 <html ng-app="ShoppingApp">
     <head>
-        <title>cart</title>
+        <title>Cart</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="js/angular.min.js"></script>
         <script src="js/angular-resource.min.js"></script>
         <script src="js/ngStorage.min.js"></script>
         <script src="js/shopping.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body ng-controller="CartController as cartCtrl">
+
+    <div>
         <div ng-include="'menu.html'"></div>
-        <table>
+    </div>
+    <div id="main-header">
+        <h1>Shopping Cart</h1>
+    </div>
+
+        <table id="cart-table">
             <thead>
                 <tr>
                     <th>Product</th>
@@ -34,6 +42,6 @@ and open the template in the editor.
                     </tr>
             </tbody>
         </table>
-        <button type="button" ng-click="cartCtrl.cartButton()">Checkout Cart</button>
+        <button type="button" ng-click="cartCtrl.cartButton()" id="checkout-button">Checkout Cart</button>
     </body>
 </html>

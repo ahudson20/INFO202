@@ -6,30 +6,37 @@ and open the template in the editor.
 -->
 <html ng-app="ShoppingApp">
     <head>
-        <title>products</title>
+        <title>Products</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="js/angular.min.js"></script>
         <script src="js/angular-resource.min.js"></script>
         <script src="js/ngStorage.min.js"></script>
         <script src="js/shopping.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body ng-controller="ProductController as prodCtrl">
-        <div>Products</div>
+    <div>
         <div ng-include="'menu.html'"></div>
-        <div>
+    </div>
+    <div id="main-header">
+        <h1>Products</h1>
+    </div>
+
+        <div id="button-filters">
             <button ng-click="prodCtrl.selectAll()">All</button>
             <button ng-repeat="cat in prodCtrl.categories" ng-click="prodCtrl.selectCategory(cat)">{{cat}}</button>
         </div>
+
         <div>
-            <table>
+            <table id="products-table">
                 <thead>
                     <tr>
-                        <td>name</td>
-                        <td>description</td>
-                        <td>price</td>
-                        <td>quantity</td>
-                        <td></td>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Buy</th>
                     </tr>
                 </thead>
                 <tbody ng-controller="CartController as cartCtrl">
@@ -43,5 +50,6 @@ and open the template in the editor.
                 </tbody>
             </table>
         </div>
+
     </body>
 </html>

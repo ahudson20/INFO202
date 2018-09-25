@@ -117,11 +117,15 @@ module.controller('CartController', function (cart, $sessionStorage, $window, sa
 //    this.saleList = $sessionStorage.cart;
     
     this.cartButton = function(){
-        let customer = $sessionStorage.customer;
-        cart.setCustomer(customer);
-        saveDAO.save(cart);
-        $sessionStorage.$reset();
-        $window.location.href = "complete.html";
+        if(cart.saleList.length > 0) {
+            let customer = $sessionStorage.customer;
+            cart.setCustomer(customer);
+            saveDAO.save(cart);
+            $sessionStorage.$reset();
+            $window.location.href = "complete.html";
+        }else{
+            alert("Please select a product before checking out!");
+        }
     };
 });
 
@@ -143,7 +147,6 @@ module.controller('ProductController', function (productDAO, categoryDAO) {
 });
 
 module.controller('CustomerController', function (registerDAO, signInDAO, $sessionStorage, $window) {
-    //alert("in controller");
     this.signInMessage = "Please sign in to continue.";
     this.registerCustomer = function (customer) {
         registerDAO.save(null, customer);

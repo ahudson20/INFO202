@@ -6,18 +6,22 @@ and open the template in the editor.
 -->
 <html ng-app="ShoppingApp">
     <head>
-        <title>index</title>
+        <title>Home</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="js/angular.min.js"></script>
         <script src="js/angular-resource.min.js"></script>
         <script src="js/ngStorage.min.js"></script>
         <script src="js/shopping.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
+
     <body>
         <div>
-            <h1>HOME</h1>
             <div ng-include="'menu.html'"></div>
+        </div>
+        <div id="main-header">
+            <h1>Welcome to Doohickies and Widgets Shop</h1>
         </div>
     </body>
 </html>
