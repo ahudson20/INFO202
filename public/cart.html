@@ -40,6 +40,10 @@ and open the template in the editor.
                         <td>{{item.quantityPurchased}}</td>
                         <td>{{item.getItemTotal()}}</td>
                     </tr>
+            <tr>
+                <td colspan="3" id="total" class="bold">Total</td>
+                <td class="bold">{{cartCtrl.total}}</td>
+            </tr>
             </tbody>
         </table>
         <button type="button" ng-click="cartCtrl.cartButton()" id="checkout-button">Checkout Cart</button>

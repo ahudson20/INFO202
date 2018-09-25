@@ -134,8 +134,6 @@ module.controller('ProductController', function (productDAO, categoryDAO) {
     // load the categories
     this.categories = categoryDAO.query();
 
-    //this.allProducts = productDaoAll.query();
-    
     // click handler for the category filter buttons
     this.selectCategory = function (selectedCat) {
         this.products = categoryDAO.query({"category": selectedCat});
@@ -184,5 +182,9 @@ module.controller('CustomerController', function (registerDAO, signInDAO, $sessi
         $sessionStorage.$reset();
         this.signedIn = false;
         $window.location.href = 'index.html';
-    }
+    };
+
+    this.getTotal = function(){
+
+    };
 });
