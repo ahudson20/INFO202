@@ -50,13 +50,13 @@ html, body{
 
 #username{
     margin-top: 1.25rem;
-    width: 70%;
+    width: 80%;
     margin-left: 0.3rem;
     margin-bottom: 1rem;
 }
 
 #password{
-    width: 70%;
+    width: 80%;
     margin-left: 1rem;
     margin-bottom: 1rem;
 }
@@ -79,7 +79,7 @@ html, body{
     margin-top: 1rem;
     margin-bottom: 1rem;
     margin-left: 1rem;
-    width: 70%;
+    width: 80%;
 }
 
 #register-form fieldset label{

@@ -6,13 +6,14 @@
 package dao;
 
 import domain.Customer;
+import web.auth.CredentialsValidator;
 
 /**
  *
  * @author anaruhudson
  */
-public interface CustomerDao {
+public interface CustomerDao extends CredentialsValidator {
     public void save(Customer customer);
     public Customer getCustomer(String username);
-    public Boolean validateCredentials(String username, String password);
+//    public Boolean validateCredentials(String username, String password);
 }

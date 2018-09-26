@@ -8,11 +8,15 @@ package web;
 import dao.CustomerCollectionsDAO;
 import dao.JdbcCustomerDao;
 import dao.JdbcProductDao;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import dao.SaleJdbcDAO;
 import org.jooby.Jooby;
 import org.jooby.json.Gzon;
+import web.auth.BasicHttpAuthenticator;
 
 /**
  *
@@ -31,10 +35,14 @@ public class Server extends Jooby{
 //        return productDao.getProductById(id);
 //        });
     use(new Gzon());
+    use(new AssetModule());
+
+    List<String> noAuth = Arrays.asList("/api/register");
+    use(new BasicHttpAuthenticator(custDao, noAuth));
+
     use(new ProductModule(productDao));
     use(new CustomerModule(custDao));
     use(new SaleModule(saleDao));
-    use(new AssetModule());
     }
     
     public static void main(String[] args) throws Exception {

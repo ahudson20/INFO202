@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class JdbcCustomerDao implements CustomerDao {
+public class JdbcCustomerDao implements CustomerDao{
     private String url = "jdbc:h2:tcp://localhost:9021/project;IFEXISTS=TRUE";
 
     public JdbcCustomerDao() {

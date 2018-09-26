@@ -60,6 +60,18 @@ class ShoppingCart {
 // create a new module, and load the other pluggable modules
 var module = angular.module('ShoppingApp', ['ngResource', 'ngStorage']);
 
+module.config(function ($sessionStorageProvider, $httpProvider) {
+    // get the auth token from the session storage
+    let authToken = $sessionStorageProvider.get('authToken');
+
+    // does the auth token actually exist?
+    if (authToken) {
+        // add the token to all HTTP requests
+        $httpProvider.defaults.headers.common.Authorization = 'Basic ' + authToken;
+    }
+});
+
+
 module.factory('productDAO', function ($resource) {
 return $resource('/api/products/:id');
 });
@@ -144,7 +156,7 @@ module.controller('ProductController', function (productDAO, categoryDAO) {
     };
 });
 
-module.controller('CustomerController', function (registerDAO, signInDAO, $sessionStorage, $window) {
+module.controller('CustomerController', function (registerDAO, signInDAO, $sessionStorage, $window, $http) {
     this.signInMessage = "Please sign in to continue.";
     this.registerCustomer = function (customer) {
         registerDAO.save(null, customer);
@@ -153,6 +165,15 @@ module.controller('CustomerController', function (registerDAO, signInDAO, $sessi
     // alias 'this' so that we can access it inside callback functions
     let ctrl = this;
     this.signIn = function (username, password) {
+
+            // generate authentication token
+            let authToken = $window.btoa(username + ":" + password);
+
+            // store token
+            $sessionStorage.authToken = authToken;
+
+            // add token to the sign in HTTP request
+            $http.defaults.headers.common.Authorization = 'Basic ' + authToken;
             // get customer from web service
             signInDAO.get({'username': username},
             // success
