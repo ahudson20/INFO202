@@ -194,6 +194,7 @@ module.controller('CustomerController', function (registerDAO, signInDAO, $sessi
         if($sessionStorage.customer)  {
             // customer exists in session storage
             this.signedIn = true;
+            this.welcome = "Welcome, " + $sessionStorage.customer.firstname;
         }else{
             this.signedIn = false;
         }
